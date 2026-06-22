@@ -1,0 +1,23 @@
+[
+  {
+    "id": "CERT-2026-001",
+    "vin_last": "12345",
+    "vehicle_model": "Tesla Model 3 Standard",
+    "coating_type": "F5 세라믹 코팅",
+    "date": "2026-03-11"
+  },
+  {
+    "id": "CERT-2026-002",
+    "vin_last": "987654",
+    "vehicle_model": "Peugeot 307SW",
+    "coating_type": "R-Alu Coat",
+    "date": "2026-03-10"
+  },
+  {
+    "id": "CERT-2026-003",
+    "vin_last": "55112",
+    "vehicle_model": "제네시스 GV80",
+    "coating_type": "쉴드 세라믹 10H TITANIUM",
+    "date": "2026-03-09"
+  }
+]

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>쉴드광택 - 프리미엄 디테일링 & 세라믹 코팅</title>
+    <meta name="description" content="부산 자동차 광택 및 세라믹 코팅 전문점 쉴드광택입니다. 신뢰할 수 있는 디테일링 샵.">
+
+    <!-- Google Fonts: Inter and Noto Sans KR -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+<!-- ============================================================
+     쉴드광택 사업체 스키마 (JSON-LD)  ※ 모든 페이지 <head>에 공통 적용
+     ------------------------------------------------------------
+     [아직 남은 작업 — 시간 날 때 교체]
+       1) geo 좌표  : 구글지도에서 쉴드광택 정확한 위도/경도로 교체 (현재 대략값)
+       2) sameAs    : 네이버 블로그·인스타그램 실제 주소 추가
+     ============================================================ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://www.shiled-line.com/#website",
+      "url": "https://www.shiled-line.com/",
+      "name": "쉴드광택",
+      "inLanguage": "ko-KR",
+      "publisher": { "@id": "https://www.shiled-line.com/#business" }
+    },
+    {
+      "@type": ["AutoRepair", "LocalBusiness"],
+      "@id": "https://www.shiled-line.com/#business",
+      "name": "쉴드광택",
+      "alternateName": "Shield Gloss",
+      "url": "https://www.shiled-line.com/",
+      "image": "https://www.shiled-line.com/assets/images/shiled_badge_v2.png",
+      "logo": "https://www.shiled-line.com/assets/images/shiled_badge_v2.png",
+      "telephone": "+82-10-3384-1850",
+      "slogan": "어떤 차를 타냐보다 어떻게 타냐가 중요합니다",
+      "description": "부산 남구에 위치한 자동차 광택·유리막코팅 전문점. 16년간 유리막코팅제(F5·G-PRO·G-TOP)를 직접 개발·제조해온 코팅제 개발자가 직접 시공합니다. 메르세데스-벤츠 부산 남천점 공식 협력 업체.",
+      "priceRange": "₩₩₩",
+      "currenciesAccepted": "KRW",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "유엔로220 1층",
+        "addressLocality": "남구",
+        "addressRegion": "부산",
+        "addressCountry": "KR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 35.1304,
+        "longitude": 129.0903
+      },
+      "areaServed": { "@type": "City", "name": "부산" },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "10:00",
+          "closes": "16:00"
+        }
+      ],
+      "founder": { "@id": "https://www.shiled-line.com/#choi" },
+      "sameAs": [
+        "https://www.youtube.com/@stingchoi5171"
+      ],
+      "makesOffer": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "신차 유리막코팅" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "자동차 광택" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "알루미늄 도어몰딩 복원" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "자동차 시트 코팅" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "자동차 사고 수리" } }
+      ]
+    },
+    {
+      "@type": "Person",
+      "@id": "https://www.shiled-line.com/#choi",
+      "name": "최한중",
+      "jobTitle": "대표 / 코팅제 개발자",
+      "worksFor": { "@id": "https://www.shiled-line.com/#business" },
+      "alumniOf": { "@type": "CollegeOrUniversity", "name": "부경대학교 화학공학과" },
+      "description": "화학공학을 전공한 자동차 유리막코팅제 개발자이자 16년 경력의 현장 시공자. F5·G-PRO·G-TOP 코팅제를 직접 개발·제조하여 시공한다."
+    },
+    {
+      "@type": "Product",
+      "@id": "https://www.shiled-line.com/#product-f5",
+      "name": "F5 유리막코팅제",
+      "brand": { "@type": "Brand", "name": "쉴드광택" },
+      "manufacturer": { "@id": "https://www.shiled-line.com/#business" },
+      "category": "자동차 유리막코팅제",
+      "description": "색감의 깊이와 글로시함을 극대화하는 데 특화된 유리막코팅제. 도장면의 색감 표현에 강점이 있다."
+    },
+    {
+      "@type": "Product",
+      "@id": "https://www.shiled-line.com/#product-gpro",
+      "name": "G-PRO 유리막코팅제",
+      "brand": { "@type": "Brand", "name": "쉴드광택" },
+      "manufacturer": { "@id": "https://www.shiled-line.com/#business" },
+      "category": "자동차 유리막코팅제",
+      "description": "경도가 높은 하드코팅 제품. 스크래치 내성과 내구성에 특화되어 있다."
+    },
+    {
+      "@type": "Product",
+      "@id": "https://www.shiled-line.com/#product-gtop",
+      "name": "G-TOP 유리막코팅제",
+      "brand": { "@type": "Brand", "name": "쉴드광택" },
+      "manufacturer": { "@id": "https://www.shiled-line.com/#business" },
+      "category": "자동차 유리막코팅제",
+      "description": "발수력과 방오성(오염 방지)에 특화된 유리막코팅제. 물때와 오염 부착을 줄여준다."
+    }
+  ]
+}
+</script>
+
+</head>
+
+<body>
+
+    <!-- Header / GNB -->
+    <header class="header" id="header">
+        <div class="container header-inner">
+            <a href="#/" class="logo">
+                <img src="assets/images/shiled_badge_v2.png" alt="쉴드광택 로고" class="header-logo-img">
+                <span class="header-logo-text">쉴드광택</span>
+            </a>
+
+            <nav class="gnb">
+                <ul class="nav-list">
+                    <li><a href="#/about" class="nav-link">회사소개</a></li>
+                    <li><a href="#/products" class="nav-link">제품소개</a></li>
+                    <li><a href="#/price" class="nav-link">서비스 단가</a></li>
+                    <li><a href="#/services" class="nav-link">서비스소개</a></li>
+                    <li><a href="#/certificates" class="nav-link">시공증명서</a></li>
+                    <li><a href="#/partners" class="nav-link">전문점 소개</a></li>
+                    <li><a href="/faq.html" class="nav-link">자주 묻는 질문</a></li>
+                    <li><a href="/blog/" class="nav-link">작업 일지</a></li>
+                </ul>
+            </nav>
+
+            <button class="mobile-menu-btn" aria-label="메뉴 열기">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Area (Dynamic Content loaded here) -->
+    <main id="app">
+        <!-- Content injected by app.js -->
+    </main>
+
+    <!-- Global Audio Player -->
+    <audio id="bg-audio" loop>
+        <source src="assets/logo.mp3" type="audio/mpeg">
+    </audio>
+    <button id="audio-toggle-btn" class="audio-toggle" aria-label="음악 재생/일시정지">
+        🎵
+    </button>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-info">
+                <h3>쉴드광택 (SHIELD GLOSS)</h3>
+                <p>대표: 최한중</p>
+                <p>주소: 부산 남구 유엔로220 1F</p>
+                <p>예약 및 문의: <a href="tel:01033841850" class="gradient-text">010-3384-1850</a></p>
+            </div>
+            <div class="footer-bottom">
+                &copy; <span id="year"></span> Shield Gloss. All rights reserved. <a href="#/login"
+                    style="color: inherit; text-decoration: none; margin-left: 8px; transition: color 0.3s ease;"
+                    onmouseover="this.style.color='var(--primary)';" onmouseout="this.style.color='inherit';">[시스템
+                    로그인]</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase SDKs (v8 compat) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+    <!-- Application Scripts -->
+    <script src="assets/js/firebase-config.js"></script>
+    <script src="assets/js/pages.js?v=1.1"></script>
+    <script src="assets/js/app.js?v=1.1"></script>
+</body>
+
+</html>
