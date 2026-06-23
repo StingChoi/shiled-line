@@ -168,6 +168,31 @@ def strip_onerror(html):
     return re.sub(r'\s+onerror=(["\']).*?\1', "", html, flags=re.IGNORECASE)
 
 
+def video_to_image_for_blogger(html):
+    """블로거는 자체 호스팅 <video> 태그를 제거한다. 그래서 블로거로 보내는 본문에서만:
+      1) <video>에 data-yt="유튜브ID"가 있으면 → 유튜브 iframe(실제 재생)으로 교체
+      2) 없으면 poster 썸네일 사진으로 교체
+      3) 둘 다 없으면 mp4 링크로 대체
+    홈페이지 HTML은 손대지 않으므로 홈페이지는 자체 영상 그대로 재생된다."""
+    def repl(m):
+        tag = m.group(0)
+        ytm = re.search(r'data-yt=(["\'])(.*?)\1', tag, re.IGNORECASE)
+        if ytm and ytm.group(2).strip():
+            vid = ytm.group(2).strip()
+            return ('<div style="position:relative;padding-bottom:56.25%;height:0;margin:14px 0;">'
+                    f'<iframe src="https://www.youtube.com/embed/{vid}" '
+                    'style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" '
+                    'allowfullscreen></iframe></div>')
+        pm = re.search(r'poster=(["\'])(.*?)\1', tag, re.IGNORECASE)
+        if pm:
+            return f'<img src="{pm.group(2)}" alt="확인세차 장면">'
+        sm = re.search(r'<source[^>]*\ssrc=(["\'])(.*?)\1', tag, re.IGNORECASE)
+        if sm:
+            return f'<p><a href="{sm.group(2)}">▶ 영상 보기</a></p>'
+        return ""
+    return re.sub(r'<video\b[^>]*>.*?</video>', repl, html, flags=re.IGNORECASE | re.DOTALL)
+
+
 def publish(html_path, draft=True):
     full_path = html_path if os.path.isabs(html_path) else os.path.join(SCRIPT_DIR, html_path)
     if not os.path.exists(full_path):
@@ -187,6 +212,7 @@ def publish(html_path, draft=True):
     body = remove_back_links(body)
     body = strip_onerror(body)
     body = fix_image_paths(body)
+    body = video_to_image_for_blogger(body)   # 블로거는 self-host 영상을 막으므로 썸네일 사진으로 대체
     body = make_images_responsive(body)
 
     img_count = len(re.findall(r'<img\b', body, re.IGNORECASE))
