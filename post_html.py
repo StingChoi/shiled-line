@@ -147,8 +147,11 @@ def fix_image_paths(html):
             clean = "blog/" + clean
         elif clean.startswith("compare/"):
             clean = "blog/" + clean
+        elif clean.startswith("videos/"):
+            clean = "blog/" + clean
         return f'{attr}={quote}{HOMEPAGE}/{clean}{quote}'
-    return re.sub(r'(src)=(["\'])([^"\']+)\2', repl, html, flags=re.IGNORECASE)
+    # src(이미지·영상·소스)와 poster(영상 썸네일) 경로를 절대주소로 변환
+    return re.sub(r'(src|poster)=(["\'])([^"\']+)\2', repl, html, flags=re.IGNORECASE)
 
 
 def make_images_responsive(html):

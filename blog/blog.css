@@ -102,6 +102,10 @@ a{color:inherit;}
 .video-wrap.placeholder .vp-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#46525E;border:1px dashed #2C353D;gap:8px;}
 .video-wrap.placeholder .vp-ico{font-size:34px;opacity:.7;}
 
+/* 자체 호스팅 영상 (확인세차 등) */
+.video-file{margin:24px 0;border-radius:12px;overflow:hidden;background:#11161B;}
+.video-file video{width:100%;height:auto;display:block;}
+
 /* CTA 박스 */
 .cta-box{
   background:radial-gradient(120% 120% at 80% 0%, #1F252C 0%, var(--ink) 60%);
