@@ -8,3 +8,7 @@ __pycache__/
 blog/_zztrash/
 blog/zztestdir/
 blog/zztest.txt
+
+# 영상 인코딩 중 생긴 깨진 임시 파일 (마운트 삭제 제한으로 남음, 발행 차단용)
+blog/videos/**/*_bad*.mp4
+blog/videos/**/zz_bad*.mp4

@@ -1,15 +1,18 @@
 # -*- coding: utf-8 -*-
 """
-쉴드광택 블로거 자동 발행 스크립트 (실전판 v5)
+쉴드광택 블로거 자동 발행 스크립트 (실전판 v6)
 ================================================
-v5 변경점:
-  - 파일명 없이 실행하면 blog 폴더의 '가장 최근 글'을 자동 선택
-  - (v4 기능 유지) 라벨 자동부착, 메뉴/로고/footer 제거, 사진처리
+v6 변경점:
+  - `--all` : 아직 안 올린 글을 한 번에 전부 발행 (밀린 것 일괄)
+              + 시차발행(1번 즉시, 2번 +2시간, 3번 +4시간 ...) = 블로거 예약발행
+  - 영상: <video data-yt=...> 가 있으면 블로거엔 유튜브 임베드로 교체, 없으면 poster 사진
+  - 사진/영상 경로(images/·compare/·videos/)를 전체 URL로 변환, poster도 변환
 
 사용법:
-  py post_html.py                  → blog 폴더 가장 최근 글을 초안으로 발행
-  py post_html.py --publish        → blog 폴더 가장 최근 글을 바로 공개 발행
-  py post_html.py blog\파일명.html → 특정 파일 지정해서 발행 (기존 방식도 유지)
+  py post_html.py                  → 가장 최근 글을 초안으로 발행
+  py post_html.py --publish        → 가장 최근 글을 바로 공개 발행
+  py post_html.py blog\파일.html   → 특정 파일 초안 발행
+  py post_html.py --all            → 안 올린 글 전부, 2시간 간격 예약발행
 
 만든이: 자비스 (최한중 대표님 전용)
 """
@@ -18,6 +21,7 @@ import os
 import re
 import sys
 import glob
+from datetime import datetime, timedelta, timezone
 
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.oauth2.credentials import Credentials
@@ -29,12 +33,12 @@ from googleapiclient.discovery import build
 # ───────────────────────────────────────────────
 BLOG_ID = "1250358417825670412"
 HOMEPAGE = "https://www.shiled-line.com"
-BLOG_FOLDER = "blog"   # 글이 들어있는 폴더 (스크립트 기준 상대경로)
+BLOG_FOLDER = "blog"
 SCOPES = ["https://www.googleapis.com/auth/blogger"]
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 CLIENT_SECRET = os.path.join(SCRIPT_DIR, "client_secret.json")
 TOKEN_FILE = os.path.join(SCRIPT_DIR, "token.json")
-PUBLISHED_LOG = os.path.join(SCRIPT_DIR, "published.txt")  # 이미 올린 글 기록
+PUBLISHED_LOG = os.path.join(SCRIPT_DIR, "published.txt")
 
 IMG_STYLE = "max-width:100%;height:auto;display:block;margin:14px auto;"
 
@@ -47,7 +51,7 @@ LABEL_RULES = [
     ("도어몰딩복원", ["도어몰딩", "몰딩복원", "몰딩 복원", "알루미늄 몰딩"]),
     ("시트코팅",    ["시트코팅", "시트 코팅", "가죽코팅"]),
     ("PPF",         ["ppf", "보호필름"]),
-    ("벤츠",        ["벤츠", "benz", "mercedes", "e350", "e클래스", "glc", "gle", "c클래스", "s클래스"]),
+    ("벤츠",        ["벤츠", "benz", "mercedes", "e350", "e클래스", "glc", "gle", "glb", "c클래스", "s클래스"]),
     ("BMW",         ["bmw", "x6", "x5", "5시리즈", "3시리즈"]),
     ("아우디",      ["아우디", "audi"]),
     ("포드",        ["포드", "ford", "f150", "f-150", "익스플로러"]),
@@ -66,6 +70,29 @@ def find_latest_html():
     if not files:
         return None
     return max(files, key=os.path.getmtime)
+
+
+def published_basenames():
+    """published.txt에 기록된, 이미 블로거에 올린 글 파일명 집합."""
+    done = set()
+    if os.path.exists(PUBLISHED_LOG):
+        with open(PUBLISHED_LOG, "r", encoding="utf-8") as f:
+            for line in f:
+                b = line.split("\t")[0].strip()
+                if b:
+                    done.add(b)
+    return done
+
+
+def find_unpublished_htmls():
+    """아직 블로거에 안 올린 글들(오래된 순). index.html 제외."""
+    folder = os.path.join(SCRIPT_DIR, BLOG_FOLDER)
+    files = [f for f in glob.glob(os.path.join(folder, "*.html"))
+             if os.path.basename(f).lower() != "index.html"]
+    done = published_basenames()
+    files = [f for f in files if os.path.basename(f) not in done]
+    files.sort(key=os.path.getmtime)   # 오래된 것부터
+    return files
 
 
 def get_service():
@@ -193,7 +220,7 @@ def video_to_image_for_blogger(html):
     return re.sub(r'<video\b[^>]*>.*?</video>', repl, html, flags=re.IGNORECASE | re.DOTALL)
 
 
-def publish(html_path, draft=True):
+def publish(html_path, draft=True, publish_at=None):
     full_path = html_path if os.path.isabs(html_path) else os.path.join(SCRIPT_DIR, html_path)
     if not os.path.exists(full_path):
         print(f"[오류] 파일을 찾을 수 없습니다: {full_path}")
@@ -212,7 +239,7 @@ def publish(html_path, draft=True):
     body = remove_back_links(body)
     body = strip_onerror(body)
     body = fix_image_paths(body)
-    body = video_to_image_for_blogger(body)   # 블로거는 self-host 영상을 막으므로 썸네일 사진으로 대체
+    body = video_to_image_for_blogger(body)   # 블로거는 self-host 영상을 막으므로 유튜브/썸네일로 대체
     body = make_images_responsive(body)
 
     img_count = len(re.findall(r'<img\b', body, re.IGNORECASE))
@@ -225,9 +252,12 @@ def publish(html_path, draft=True):
         "content": body,
         "labels": labels,
     }
+    # publish_at(미래 시각)을 주면 블로거가 그 시각에 자동 공개(예약발행).
+    # 지금 시각이면 즉시 공개. draft=False 여야 예약/공개가 동작한다.
+    if publish_at:
+        post["published"] = publish_at
     result = service.posts().insert(blogId=BLOG_ID, body=post, isDraft=draft).execute()
 
-    # 발행 기록 남기기 (어떤 파일 올렸는지)
     with open(PUBLISHED_LOG, "a", encoding="utf-8") as logf:
         logf.write(os.path.basename(full_path) + "\t" + (result.get("url") or "") + "\n")
 
@@ -238,7 +268,13 @@ def publish(html_path, draft=True):
     print(f"   사진 : {img_count}장 (크기 자동조절)")
     print(f"   라벨 : {', '.join(labels)}")
     print(f"   주소 : {result.get('url')}")
-    print("   상태 : " + ("초안(임시저장)" if draft else "공개 발행됨"))
+    if draft:
+        status = "초안(임시저장)"
+    elif publish_at:
+        status = f"예약발행 → {publish_at} 에 자동 공개"
+    else:
+        status = "공개 발행됨"
+    print("   상태 : " + status)
     print("=" * 50)
 
 
@@ -246,15 +282,26 @@ if __name__ == "__main__":
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
     is_draft = "--publish" not in sys.argv
 
-    if args:
-        # 파일명을 직접 지정한 경우
-        target = args[0]
+    if "--all" in sys.argv:
+        # 아직 안 올린 글 전부 발행 (밀린 것 일괄).
+        # 시차발행: 1번=지금 즉시 공개, 2번=+2시간, 3번=+4시간 ... (블로거 예약발행)
+        targets = find_unpublished_htmls()
+        if not targets:
+            print("[안내] 새로 발행할 글이 없습니다(모두 발행됨).")
+            sys.exit(0)
+        GAP_HOURS = 2
+        KST = timezone(timedelta(hours=9))
+        base = datetime.now(KST).replace(microsecond=0)
+        print(f"[일괄·시차발행] 안 올린 글 {len(targets)}개를 {GAP_HOURS}시간 간격으로 공개 예약합니다.")
+        for i, t in enumerate(targets):
+            pub_at = (base + timedelta(hours=GAP_HOURS * i)).isoformat()
+            publish(t, draft=False, publish_at=pub_at)
+    elif args:
+        publish(args[0], draft=is_draft)
     else:
-        # 파일명 없으면 → 가장 최근 글 자동 선택
         target = find_latest_html()
         if not target:
             print("[오류] blog 폴더에서 글(html)을 찾지 못했습니다.")
             sys.exit(1)
         print(f"[자동선택] 가장 최근 글: {os.path.basename(target)}")
-
-    publish(target, draft=is_draft)
+        publish(target, draft=is_draft)

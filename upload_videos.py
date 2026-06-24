@@ -90,15 +90,10 @@ def upload_one(yt, filepath, title, description):
     return response["id"]
 
 
-def main():
-    target = sys.argv[1] if len(sys.argv) > 1 else find_latest_html()
-    if not target:
-        print("[안내] blog 폴더에서 글(html)을 찾지 못했습니다.")
-        return
-    full = target if os.path.isabs(target) else os.path.join(SCRIPT_DIR, target)
+def process_html(full):
     if not os.path.exists(full):
         print(f"[오류] 파일을 찾을 수 없습니다: {full}")
-        sys.exit(1)
+        return
 
     with open(full, "r", encoding="utf-8") as f:
         html = f.read()
@@ -162,6 +157,25 @@ def main():
         print(f"\n[완료] {uploaded}개 영상 업로드 + 글에 연결했습니다: {os.path.basename(full)}")
     else:
         print("\n[안내] 새로 올린 영상이 없습니다.")
+
+
+def main():
+    if "--all" in sys.argv:
+        files = [f for f in glob.glob(os.path.join(BLOG_FOLDER, "*.html"))
+                 if os.path.basename(f).lower() != "index.html"]
+        files.sort(key=os.path.getmtime)   # 오래된 것부터
+        if not files:
+            print("[안내] blog 폴더에 글이 없습니다.")
+            return
+        for full in files:
+            process_html(full)
+    else:
+        one = next((a for a in sys.argv[1:] if not a.startswith("--")), None) or find_latest_html()
+        if not one:
+            print("[안내] blog 폴더에서 글(html)을 찾지 못했습니다.")
+            return
+        full = one if os.path.isabs(one) else os.path.join(SCRIPT_DIR, one)
+        process_html(full)
 
 
 if __name__ == "__main__":
