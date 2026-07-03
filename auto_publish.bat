@@ -1,5 +1,6 @@
 @echo off
-chcp 949 >nul
+chcp 65001 >nul
+set PYTHONIOENCODING=utf-8
 cd /d D:\shiled-line
 
 echo [auto_publish] 1/4 YouTube upload...
