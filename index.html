@@ -23,9 +23,10 @@
 <!-- ============================================================
      쉴드광택 사업체 스키마 (JSON-LD)  ※ 모든 페이지 <head>에 공통 적용
      ------------------------------------------------------------
-     [아직 남은 작업 — 시간 날 때 교체]
-       1) geo 좌표  : 구글지도에서 쉴드광택 정확한 위도/경도로 교체 (현재 대략값)
-       2) sameAs    : 네이버 블로그·인스타그램 실제 주소 추가
+     [남은 작업 — 선택]
+       · geo 좌표: 현재 대략값(35.1304, 129.0903). 구글지도에서 정확한
+         위도/경도 확인되면 교체 (주소가 정확해 필수는 아님)
+       · sameAs(YouTube·네이버블로그·인스타)는 반영 완료
      ============================================================ -->
 <script type="application/ld+json">
 {
@@ -81,7 +82,9 @@
       ],
       "founder": { "@id": "https://www.shiled-line.com/#choi" },
       "sameAs": [
-        "https://www.youtube.com/@stingchoi5171"
+        "https://www.youtube.com/@stingchoi5171",
+        "https://blog.naver.com/shiledgt",
+        "https://www.instagram.com/sting_choi"
       ],
       "makesOffer": [
         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "신차 유리막코팅" } },
