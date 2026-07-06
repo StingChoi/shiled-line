@@ -13,6 +13,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // pages object imported from pages.js
     const pages = window.AppPages;
 
+    // 홈 콘텐츠는 index.html에 정적으로 심어져 있음(검색·AI 노출용).
+    // 이를 홈 뷰로 그대로 사용해, 콘텐츠를 한 곳(index.html)에서만 관리한다.
+    const staticHomeHTML = appContainer.innerHTML.trim();
+    if (staticHomeHTML) {
+        pages.home = staticHomeHTML;
+    }
+
+    // 최초 로드 시, 이미 그려져 있는 홈 정적 콘텐츠를 다시 그리지 않도록 하는 플래그(깜빡임 방지)
+    let isFirstRender = true;
+
     // --- Router Logic ---
     function navigate() {
         let hash = window.location.hash.substring(1); // remove '#'
@@ -34,8 +44,17 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        // 최초 로드가 홈이면 index.html에 이미 렌더된 정적 콘텐츠를 그대로 사용(재렌더/깜빡임 생략)
+        if (isFirstRender) {
+            isFirstRender = false;
+            if (hash === 'home' && appContainer.children.length > 0) {
+                updateNav(hash);
+                return;
+            }
+        }
+
         const view = pages[hash] || pages['notfound'];
-        
+
         // Simple fade out/in effect
         appContainer.style.opacity = '0';
         
