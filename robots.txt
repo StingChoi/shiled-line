@@ -1,0 +1,5 @@
+# 쉴드광택 robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://www.shiled-line.com/sitemap.xml
