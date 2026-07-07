@@ -67,6 +67,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.shiled-line.com/blog/benz-e300-newcar-f5-0424.html</loc>
+    <lastmod>2026-07-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.shiled-line.com/blog/benz-e300-polish-coating.html</loc>
     <lastmod>2026-06-24</lastmod>
     <changefreq>monthly</changefreq>
@@ -87,6 +93,12 @@
   <url>
     <loc>https://www.shiled-line.com/blog/benz-g63-newcar-coating.html</loc>
     <lastmod>2026-07-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.shiled-line.com/blog/benz-g63-white-newcar-coating.html</loc>
+    <lastmod>2026-07-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -181,6 +193,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.shiled-line.com/blog/bmw-520i-gray-newcar-coating-0428.html</loc>
+    <lastmod>2026-07-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.shiled-line.com/blog/bmw-520i-newcar-coating.html</loc>
     <lastmod>2026-07-07</lastmod>
     <changefreq>monthly</changefreq>
@@ -189,6 +207,12 @@
   <url>
     <loc>https://www.shiled-line.com/blog/bmw-530e-newcar-coating.html</loc>
     <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.shiled-line.com/blog/bmw-530i-white-newcar-coating.html</loc>
+    <lastmod>2026-07-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -285,6 +309,12 @@
   <url>
     <loc>https://www.shiled-line.com/blog/renault-scenic-dual-coating.html</loc>
     <lastmod>2026-06-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.shiled-line.com/blog/tesla-model3-white-gtop-coating.html</loc>
+    <lastmod>2026-07-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
