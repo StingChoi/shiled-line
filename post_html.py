@@ -220,6 +220,23 @@ def video_to_image_for_blogger(html):
     return re.sub(r'<video\b[^>]*>.*?</video>', repl, html, flags=re.IGNORECASE | re.DOTALL)
 
 
+def add_source_notice(html, source_url):
+    """홈페이지·블로거 두 곳에 같은 글이 올라가는 중복 콘텐츠 문제를 줄이기 위한 처리.
+    블로거 Posts API는 <head>를 못 건드리므로 진짜 canonical 태그는 보장이 안 되지만,
+    비용 없이 시도는 해두고(일부 크롤러는 본문 내 link 태그도 인식), 그보다 확실한 건
+    글 맨 위에 원문(홈페이지) 링크를 눈에 보이게 박아 사용자·크롤러 모두에게
+    "원본은 여기"라는 신호를 주는 것이다."""
+    canonical_tag = f'<link rel="canonical" href="{source_url}">\n'
+    notice = (
+        '<p style="background:#f6f6f6;border-left:4px solid #d4a017;'
+        'padding:12px 16px;margin:0 0 20px;font-size:14px;line-height:1.6;color:#555;">'
+        f'📌 이 글의 원문은 <a href="{source_url}" target="_blank" rel="noopener" '
+        'style="color:#b8860b;font-weight:bold;">쉴드광택 홈페이지 작업 일지</a>에 있습니다. '
+        '최신 사진과 전체 내용은 홈페이지에서 확인해 주세요.</p>\n'
+    )
+    return canonical_tag + notice + html
+
+
 def publish(html_path, draft=True, publish_at=None):
     full_path = html_path if os.path.isabs(html_path) else os.path.join(SCRIPT_DIR, html_path)
     if not os.path.exists(full_path):
@@ -241,6 +258,9 @@ def publish(html_path, draft=True, publish_at=None):
     body = fix_image_paths(body)
     body = video_to_image_for_blogger(body)   # 블로거는 self-host 영상을 막으므로 유튜브/썸네일로 대체
     body = make_images_responsive(body)
+
+    source_url = f"{HOMEPAGE}/blog/{os.path.basename(full_path)}"
+    body = add_source_notice(body, source_url)
 
     img_count = len(re.findall(r'<img\b', body, re.IGNORECASE))
 
