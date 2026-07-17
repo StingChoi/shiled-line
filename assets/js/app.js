@@ -32,6 +32,17 @@ document.addEventListener('DOMContentLoaded', () => {
             hash = hash.substring(1); // remove leading '/'
         }
 
+        // --- 딥링크 쿼리 파싱 (예: #/certificates?vin=232441 → QR 스캔 시 바로 조회) ---
+        let routeQuery = {};
+        const qIdx = hash.indexOf('?');
+        if (qIdx !== -1) {
+            hash.substring(qIdx + 1).split('&').forEach(pair => {
+                const [k, v] = pair.split('=');
+                if (k) routeQuery[decodeURIComponent(k)] = decodeURIComponent(v || '');
+            });
+            hash = hash.substring(0, qIdx);
+        }
+
         // --- RBAC Route Guards ---
         const user = window.auth ? window.auth.currentUser : null;
         if (hash === 'admin' && !user) {
@@ -71,6 +82,16 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (hash === 'admin' && window.loadAdminCertificates) {
                 window.loadAdminCertificates();
+            }
+
+            // 딥링크로 vin이 들어오면 자동으로 조회 실행 (QR 스캔 → 바로 결과)
+            if (hash === 'certificates' && routeQuery.vin) {
+                const input = document.getElementById('cert-search-input');
+                const form = document.getElementById('cert-search-form');
+                if (input && form) {
+                    input.value = routeQuery.vin;
+                    form.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+                }
             }
 
         }, 200);

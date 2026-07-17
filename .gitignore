@@ -1,6 +1,7 @@
 client_secret.json
 token.json
 token_youtube.json
+firebase-admin-key.json
 published.txt
 __pycache__/
 
