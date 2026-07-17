@@ -21,12 +21,14 @@ import os
 import re
 import sys
 import glob
+import time
 from datetime import datetime, timedelta, timezone
 
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.oauth2.credentials import Credentials
 from google.auth.transport.requests import Request
 from googleapiclient.discovery import build
+from googleapiclient.errors import HttpError
 
 # ───────────────────────────────────────────────
 # 기본 설정
@@ -237,6 +239,23 @@ def add_source_notice(html, source_url):
     return canonical_tag + notice + html
 
 
+def insert_with_retry(service, post, draft, max_retries=6):
+    """Blogger API가 429(rateLimitExceeded)를 던지면 죽지 않고 대기 후 재시도한다.
+    한 번 예약발행 배치(--all)가 중간에 죽어 나머지 글이 안 올라가던 문제를 막기 위함."""
+    delay = 30
+    for attempt in range(1, max_retries + 1):
+        try:
+            return service.posts().insert(blogId=BLOG_ID, body=post, isDraft=draft).execute()
+        except HttpError as e:
+            is_rate_limit = e.resp.status == 429 or "rateLimitExceeded" in str(e)
+            if is_rate_limit and attempt < max_retries:
+                print(f"[대기] Blogger API 레이트리밋(429) — {delay}초 후 재시도 ({attempt}/{max_retries})")
+                time.sleep(delay)
+                delay = min(delay * 2, 300)
+                continue
+            raise
+
+
 def publish(html_path, draft=True, publish_at=None):
     full_path = html_path if os.path.isabs(html_path) else os.path.join(SCRIPT_DIR, html_path)
     if not os.path.exists(full_path):
@@ -276,7 +295,7 @@ def publish(html_path, draft=True, publish_at=None):
     # 지금 시각이면 즉시 공개. draft=False 여야 예약/공개가 동작한다.
     if publish_at:
         post["published"] = publish_at
-    result = service.posts().insert(blogId=BLOG_ID, body=post, isDraft=draft).execute()
+    result = insert_with_retry(service, post, draft)
 
     with open(PUBLISHED_LOG, "a", encoding="utf-8") as logf:
         logf.write(os.path.basename(full_path) + "\t" + (result.get("url") or "") + "\n")
@@ -316,6 +335,8 @@ if __name__ == "__main__":
         for i, t in enumerate(targets):
             pub_at = (base + timedelta(hours=GAP_HOURS * i)).isoformat()
             publish(t, draft=False, publish_at=pub_at)
+            if i < len(targets) - 1:
+                time.sleep(15)   # 연속 호출 사이 간격을 둬 레이트리밋 재발을 줄임
     elif args:
         publish(args[0], draft=is_draft)
     else:
