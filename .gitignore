@@ -5,6 +5,9 @@ firebase-admin-key.json
 published.txt
 __pycache__/
 
+# 로컬 미리보기 설정 (개발용, 사이트에 올라갈 필요 없음)
+.claude/
+
 # 코워크 임시 테스트 잔여물 (수동 삭제 가능, 웹 반영 차단용)
 blog/_zztrash/
 blog/zztestdir/

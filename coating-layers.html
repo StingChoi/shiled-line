@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>유리막코팅 층 구조 | 싱글·듀얼·트리플 코팅 원리 — 쉴드광택</title>
+<meta name="description" content="유리막코팅은 도장면 위에 어떻게 올라갈까요. 싱글(F5·G-PRO·G-TOP)부터 듀얼·트리플까지, 코팅층이 쌓이는 순서와 각 층의 역할을 단면도로 보여드립니다. 부산 유리막코팅 전문 쉴드광택, 16년 코팅제 개발자가 직접 설명합니다." />
+<link rel="canonical" href="https://www.shiled-line.com/coating-layers.html" />
+
+<!-- 폰트 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --ink:#14171B;
+    --ink-2:#1C2026;
+    --ink-3:#252A31;
+    --paper:#F3F4F1;
+    --card:#FFFFFF;
+    --line:#E4E6E1;
+    --line-dark:#30353C;
+    --text:#181B1F;
+    --muted:#5C636B;
+    --muted-dark:#9AA3AC;
+    --aqua:#13C2C9;
+    --aqua-deep:#0B8E94;
+    --aqua-soft:rgba(19,194,201,.12);
+    --shadow:0 1px 2px rgba(20,23,27,.04), 0 8px 24px rgba(20,23,27,.06);
+
+    /* 층 정체성 색 — 역할에서 도출 */
+    --steel:#6E8399;   /* G-PRO · 경도 */
+    --amber:#C89246;   /* F5 · 색감 */
+
+    /* 단면 시편 내부는 항상 어둡게 (검정 도장면을 조명 아래서 보는 장면) */
+    --spec-bg:#0C0E11;
+    --spec-line:rgba(255,255,255,.10);
+    --spec-text:#E8EBEE;
+    --spec-muted:#8892A0;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:"Pretendard","Pretendard Variable",system-ui,sans-serif;
+    background:var(--paper);
+    color:var(--text);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    word-break:keep-all;
+    overflow-wrap:break-word;
+  }
+  .mono{font-family:"JetBrains Mono",monospace;}
+  .wrap{max-width:880px;margin:0 auto;padding:0 24px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background:radial-gradient(120% 120% at 80% 0%, #1F252C 0%, var(--ink) 55%);
+    color:#fff;
+    overflow:hidden;
+    padding:88px 0 76px;
+  }
+  .hero::after{
+    content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(19,194,201,.6),transparent);
+  }
+  .beads{position:absolute;inset:0;pointer-events:none;}
+  .bead{
+    position:absolute;border-radius:50%;
+    background:radial-gradient(circle at 34% 28%, rgba(255,255,255,.92), rgba(19,194,201,.35) 38%, rgba(19,194,201,.04) 72%);
+    box-shadow:inset 0 0 18px rgba(255,255,255,.18), 0 10px 30px rgba(0,0,0,.45);
+    opacity:.85;
+  }
+  .bead.b1{width:120px;height:120px;top:-26px;right:6%;}
+  .bead.b2{width:54px;height:54px;top:120px;right:24%;opacity:.6;}
+  .bead.b3{width:26px;height:26px;top:64px;right:16%;opacity:.5;}
+  .bead.b4{width:80px;height:80px;bottom:-22px;right:38%;opacity:.35;}
+  .bead.b5{width:16px;height:16px;top:40px;right:40%;opacity:.45;}
+
+  .hero .wrap{position:relative;z-index:2;}
+  .backlink{
+    display:inline-block;font-size:13px;color:var(--muted-dark);
+    text-decoration:none;margin:0 0 20px;
+  }
+  .backlink:hover{color:var(--aqua);}
+  .eyebrow{
+    font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--aqua);font-weight:700;margin:0 0 22px;
+  }
+  .hero h1{
+    font-size:clamp(30px,5.4vw,52px);
+    font-weight:800;line-height:1.18;letter-spacing:-.02em;
+    margin:0 0 22px;text-wrap:balance;
+  }
+  .hero h1 .soft{color:var(--muted-dark);font-weight:700;}
+  .lead{
+    font-size:clamp(15px,2.2vw,18px);color:#D7DCE1;max-width:48ch;margin:0;
+  }
+  .lead b{color:#fff;font-weight:700;}
+
+  /* ---------- 본문 공통 ---------- */
+  main{padding:56px 0 24px;}
+  .sec{margin-bottom:52px;}
+  .sec-head{
+    display:flex;align-items:baseline;gap:14px;
+    padding-bottom:14px;margin-bottom:18px;
+    border-bottom:1px solid var(--line);
+  }
+  .sec-num{font-size:12px;font-weight:700;color:var(--aqua-deep);letter-spacing:.1em;}
+  .sec-title{font-size:15px;font-weight:700;color:var(--muted);margin:0;}
+  h2.big{
+    font-size:clamp(21px,3vw,27px);font-weight:800;letter-spacing:-.02em;
+    margin:0 0 12px;text-wrap:balance;
+  }
+  p.body{font-size:15.5px;line-height:1.72;color:#33383E;margin:0 0 14px;max-width:64ch;}
+  p.body:last-child{margin-bottom:0;}
+  p.body strong{color:var(--ink);font-weight:700;}
+
+  /* ---------- 조합 선택 ---------- */
+  .picker{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 10px;}
+  .pick{
+    appearance:none;font-family:inherit;font-size:14px;font-weight:600;
+    color:var(--muted);background:var(--card);
+    border:1px solid var(--line);border-radius:999px;
+    padding:9px 16px;cursor:pointer;
+    transition:background .18s, color .18s, border-color .18s, transform .18s;
+  }
+  .pick:hover{color:var(--text);border-color:var(--aqua);transform:translateY(-1px);}
+  .pick[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff;}
+  .picker-note{font-size:12px;color:var(--muted-dark);margin:0 0 22px;letter-spacing:.02em;}
+
+  /* ---------- 단면 시편 ---------- */
+  .specimen{
+    background:var(--spec-bg);
+    border-radius:14px 14px 0 0;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    display:grid;
+    grid-template-columns:78px 1fr;
+  }
+  .caliper{position:relative;border-right:1px solid var(--spec-line);display:flex;flex-direction:column;}
+  .cal-seg{
+    position:relative;display:flex;align-items:center;justify-content:flex-end;
+    padding-right:12px;
+    transition:flex-grow .45s cubic-bezier(.4,0,.2,1);
+  }
+  .cal-seg span{
+    font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:600;
+    letter-spacing:.14em;color:#A6B0BA;
+    writing-mode:vertical-rl;text-orientation:mixed;white-space:nowrap;
+    opacity:1;transition:opacity .3s ease;
+  }
+  .cal-seg.empty span{opacity:0;}
+  .cal-seg::after{
+    content:"";position:absolute;right:0;top:8px;bottom:8px;
+    width:1px;background:var(--spec-line);
+  }
+
+  .bands{display:flex;flex-direction:column;}
+  .band{
+    position:relative;display:flex;align-items:center;justify-content:space-between;
+    padding:0 18px;overflow:hidden;
+    transition:height .45s cubic-bezier(.4,0,.2,1), opacity .35s ease, transform .45s cubic-bezier(.4,0,.2,1);
+  }
+  .band-name{
+    font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:700;
+    letter-spacing:.06em;color:var(--spec-text);white-space:nowrap;
+  }
+  .band-role{font-size:12px;color:var(--spec-muted);white-space:nowrap;}
+
+  .band-air{
+    height:66px;
+    background:linear-gradient(180deg,rgba(255,255,255,.05) 0%,transparent 100%);
+    align-items:flex-start;padding-top:12px;
+  }
+  .band-air .band-name{color:var(--spec-muted);font-weight:500;}
+
+  .coat{height:0;opacity:0;transform:translateY(6px);border-top:1px solid rgba(255,255,255,.14);}
+  .coat.on{height:48px;opacity:1;transform:none;}
+  .coat-gtop{background:linear-gradient(180deg,rgba(19,194,201,.46) 0%,rgba(19,194,201,.24) 100%);}
+  .coat-f5{background:linear-gradient(180deg,rgba(200,146,70,.46) 0%,rgba(200,146,70,.23) 100%);}
+  .coat-gpro{background:linear-gradient(180deg,rgba(110,131,153,.54) 0%,rgba(110,131,153,.29) 100%);}
+
+  .band-clear{height:54px;background:linear-gradient(180deg,#2E353D 0%,#232930 100%);border-top:1px solid rgba(255,255,255,.16);}
+  .band-base{height:66px;background:linear-gradient(180deg,#101317 0%,#08090B 100%);border-top:1px solid rgba(255,255,255,.07);}
+  .band-primer{height:38px;background:linear-gradient(180deg,#4E4A45 0%,#403C38 100%);border-top:1px solid rgba(255,255,255,.06);}
+  .band-steel{height:48px;background:linear-gradient(180deg,#79828B 0%,#5C646C 100%);border-top:1px solid rgba(255,255,255,.12);}
+  .band-steel .band-name,.band-primer .band-name{color:#fff;}
+  .band-steel .band-role,.band-primer .band-role{color:rgba(255,255,255,.78);}
+  .band-clear .band-role{color:#A9B3BD;}
+
+  .readout{
+    background:var(--card);border:1px solid var(--line);border-top:none;
+    border-radius:0 0 14px 14px;padding:18px 22px;margin:0 0 12px;
+    box-shadow:var(--shadow);
+  }
+  .readout p{margin:0;font-size:15px;color:var(--muted);max-width:66ch;line-height:1.7;}
+  .readout b{color:var(--text);font-weight:700;}
+  .scale-note{font-size:12px;color:var(--muted-dark);margin:0 0 52px;}
+
+  /* ---------- 시험 카드 ---------- */
+  .tests{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:0 0 20px;}
+  .test{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:var(--shadow);}
+  .test-head{padding:16px 18px 12px;}
+  .test-title{font-size:14.5px;font-weight:700;margin:0 0 3px;letter-spacing:-.01em;}
+  .test-sub{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.08em;color:var(--muted-dark);margin:0;}
+  .stage{position:relative;height:132px;background:var(--spec-bg);overflow:hidden;}
+  .stage::after{content:"";position:absolute;left:0;right:0;bottom:38px;height:1px;background:rgba(255,255,255,.22);}
+  .surf{position:absolute;left:0;right:0;bottom:0;height:38px;background:linear-gradient(180deg,#232930 0%,#0E1114 100%);}
+  .test-foot{
+    padding:11px 18px 14px;border-top:1px solid var(--line);
+    display:flex;align-items:baseline;justify-content:space-between;gap:10px;
+  }
+  .foot-k{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.08em;color:var(--muted-dark);}
+  .foot-v{font-size:13.5px;font-weight:700;color:var(--text);text-align:right;}
+
+  .drop{
+    position:absolute;bottom:38px;width:54px;height:54px;border-radius:50%;
+    background:
+      radial-gradient(circle at 34% 28%, rgba(255,255,255,.85) 0%, rgba(255,255,255,.16) 26%, transparent 52%),
+      linear-gradient(180deg, rgba(19,194,201,.62), rgba(19,194,201,.30));
+    border:1px solid rgba(255,255,255,.34);
+    transform-origin:50% 100%;
+    transform:scaleX(calc(.78 + 1.05*(1 - var(--wet,.5)))) scaleY(calc(.30 + .74*var(--wet,.5)));
+    transition:transform .5s cubic-bezier(.4,0,.2,1);
+  }
+  .drop-a{left:42px;}
+  .drop-b{left:118px;width:38px;height:38px;}
+  .drop-c{left:180px;width:26px;height:26px;}
+
+  .stylus{
+    position:absolute;bottom:38px;left:0;width:2px;height:34px;
+    background:linear-gradient(180deg,rgba(255,255,255,.15),rgba(255,255,255,.78));
+    transform-origin:50% 100%;transform:rotate(18deg);
+    animation:sweep 4.2s cubic-bezier(.55,0,.45,1) infinite;
+  }
+  .stylus::before{
+    content:"";position:absolute;bottom:-3px;left:-3px;width:8px;height:8px;
+    border-radius:50%;background:rgba(255,255,255,.9);
+  }
+  @keyframes sweep{
+    0%{transform:translateX(18px) rotate(18deg);opacity:0;}
+    10%{opacity:1;}
+    85%{transform:translateX(200px) rotate(18deg);opacity:1;}
+    100%{transform:translateX(200px) rotate(18deg);opacity:0;}
+  }
+  .groove{
+    position:absolute;bottom:30px;left:22px;height:3px;width:186px;border-radius:2px;
+    background:linear-gradient(90deg,transparent,rgba(0,0,0,.85) 12%,rgba(0,0,0,.85) 88%,transparent);
+    box-shadow:0 1px 0 rgba(255,255,255,.16);
+    opacity:calc(1 - var(--hard,.5));
+    animation:grooveIn 4.2s linear infinite;
+    transition:opacity .4s ease;
+  }
+  @keyframes grooveIn{
+    0%,8%{clip-path:inset(0 100% 0 0);}
+    85%,100%{clip-path:inset(0 0 0 0);}
+  }
+  .spark{
+    position:absolute;bottom:44px;left:146px;width:5px;height:5px;border-radius:50%;
+    background:var(--aqua);opacity:0;box-shadow:0 0 10px 2px rgba(19,194,201,.6);
+    animation:sparkPop 4.2s linear infinite;
+  }
+  @keyframes sparkPop{
+    0%,58%{opacity:0;transform:none;}
+    64%{opacity:calc(var(--hard,.5));transform:translate(6px,-9px) scale(1.5);}
+    78%{opacity:0;transform:translate(15px,-20px) scale(.5);}
+    100%{opacity:0;}
+  }
+
+  .panel{
+    position:absolute;inset:16px 18px 52px;border-radius:5px;
+    background:linear-gradient(180deg,#15181C 0%,#050607 100%);overflow:hidden;
+  }
+  .gloss{
+    position:absolute;top:0;bottom:0;width:44%;
+    background:linear-gradient(105deg,
+      transparent 0%,
+      rgba(255,255,255,calc(.06 + .30*var(--depth,.5))) 46%,
+      rgba(255,255,255,calc(.10 + .55*var(--depth,.5))) 52%,
+      rgba(255,255,255,calc(.06 + .30*var(--depth,.5))) 58%,
+      transparent 100%);
+    filter:blur(calc(9px - 7px*var(--depth,.5)));
+    animation:glide 4.6s cubic-bezier(.5,0,.5,1) infinite;
+    transition:filter .45s ease;
+  }
+  @keyframes glide{0%{transform:translateX(-130%);}100%{transform:translateX(330%);}}
+  .panel::after{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(120% 90% at 50% 108%, rgba(200,146,70,calc(.20 * var(--depth,.5))) 0%, transparent 62%);
+    transition:background .45s ease;
+  }
+
+  /* ---------- 상대 비교 ---------- */
+  .compare{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;box-shadow:var(--shadow);}
+  .compare-note{font-size:13.5px;color:var(--muted);margin:0 0 20px;}
+  .metric{display:grid;grid-template-columns:104px 1fr 76px;gap:14px;align-items:center;margin-bottom:12px;}
+  .metric:last-child{margin-bottom:0;}
+  .metric-k{font-size:13.5px;font-weight:600;}
+  .rail{height:8px;border-radius:99px;background:var(--line);overflow:hidden;}
+  .fill{height:100%;border-radius:99px;width:calc(var(--v,0) * 100%);transition:width .55s cubic-bezier(.4,0,.2,1);}
+  .fill-hard{background:var(--steel);}
+  .fill-depth{background:var(--amber);}
+  .fill-wet{background:var(--aqua);}
+  .metric-v{font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--muted);text-align:right;letter-spacing:.04em;}
+
+  /* ---------- 관련 링크 ---------- */
+  .more{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;}
+  .more a{
+    font-size:14px;font-weight:600;color:var(--ink);text-decoration:none;
+    background:var(--card);border:1px solid var(--line);border-radius:999px;padding:10px 18px;
+    transition:border-color .18s ease,transform .18s ease;
+  }
+  .more a:hover{border-color:var(--aqua);transform:translateY(-1px);}
+
+  /* ---------- CONTACT ---------- */
+  .contact{background:var(--ink);color:#fff;margin-top:48px;padding:64px 0 56px;position:relative;}
+  .contact::before{
+    content:"";position:absolute;left:0;right:0;top:0;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(19,194,201,.6),transparent);
+  }
+  .contact .eyebrow{margin-bottom:18px;}
+  .contact h2{font-size:clamp(22px,3.6vw,30px);font-weight:800;letter-spacing:-.02em;margin:0 0 28px;}
+  .grid{display:grid;grid-template-columns:1fr;gap:26px;}
+  @media(min-width:620px){.grid{grid-template-columns:1.1fr 1fr;}}
+  .info-label{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--aqua);font-weight:700;margin:0 0 8px;}
+  .info-val{font-size:16px;color:#E6EAEE;margin:0 0 20px;line-height:1.6;}
+  .info-val a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.3);}
+  .info-val a:hover{border-color:var(--aqua);}
+  .hours{width:100%;border-collapse:collapse;font-size:15px;}
+  .hours td{padding:9px 0;border-bottom:1px solid var(--line-dark);color:#D7DCE1;}
+  .hours td:last-child{text-align:right;color:#fff;font-weight:600;}
+  .hours tr.off td{color:var(--muted-dark);}
+  .hours tr.off td:last-child{color:var(--muted-dark);font-weight:500;}
+  .cta{
+    display:inline-flex;align-items:center;gap:10px;margin-top:28px;
+    background:var(--aqua);color:#06262A;font-weight:800;font-size:16px;
+    text-decoration:none;padding:15px 26px;border-radius:10px;
+    transition:background .18s ease,transform .18s ease;
+  }
+  .cta:hover{background:#16D6DD;transform:translateY(-1px);}
+  .slogan{text-align:center;color:var(--muted-dark);font-size:14px;margin:40px 0 0;}
+  .slogan b{color:#fff;font-weight:600;}
+  footer.legal{background:var(--ink);color:var(--muted-dark);font-size:12.5px;padding:0 0 40px;text-align:center;}
+
+  :focus-visible{outline:2px solid var(--aqua);outline-offset:3px;border-radius:4px;}
+
+  @media (max-width:620px){
+    .specimen{grid-template-columns:56px 1fr;}
+    .band{padding:0 13px;}
+    .band-role{display:none;}
+    .metric{grid-template-columns:78px 1fr 62px;gap:10px;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none !important;transition-duration:.01ms !important;scroll-behavior:auto;}
+    .groove{clip-path:none;}
+  }
+</style>
+
+<!-- ============================================================
+     쉴드광택 사업체 스키마 (LocalBusiness JSON-LD)
+     ※ index.html / faq.html 의 #business 노드와 값이 동일해야 합니다.
+     ============================================================ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["AutoRepair", "LocalBusiness"],
+  "@id": "https://www.shiled-line.com/#business",
+  "name": "쉴드광택",
+  "alternateName": "Shield Gloss",
+  "description": "부산 남구 자동차 광택·유리막코팅 전문점. 16년 경력 코팅제 개발자가 직접 개발한 F5·G-PRO·G-TOP 유리막코팅제로 시공합니다. 메르세데스-벤츠 부산 남천점 공식 협력 업체.",
+  "url": "https://www.shiled-line.com/",
+  "logo": "https://www.shiled-line.com/assets/images/shiled_badge_v2.png",
+  "image": "https://www.shiled-line.com/assets/images/shiled_badge_v2.png",
+  "telephone": "+82-10-3384-1850",
+  "priceRange": "₩₩₩",
+  "currenciesAccepted": "KRW",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "유엔로220 1층",
+    "addressLocality": "남구",
+    "addressRegion": "부산",
+    "postalCode": "48529",
+    "addressCountry": "KR"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 35.129811,
+    "longitude": 129.100345
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "09:00",
+      "closes": "18:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "10:00",
+      "closes": "16:00"
+    }
+  ],
+  "founder": {
+    "@type": "Person",
+    "name": "최한중",
+    "jobTitle": "대표 / 코팅제 개발자"
+  },
+  "areaServed": { "@type": "City", "name": "부산" },
+  "makesOffer": [
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "자동차 유리막코팅" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "자동차 광택·도장면 복원" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "알루미늄 도어몰딩 복원" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "가죽 시트 코팅" } }
+  ],
+  "sameAs": [
+    "https://blog.naver.com/shiledgt",
+    "https://www.youtube.com/@stingchoi5171",
+    "https://www.instagram.com/sting_choi",
+    "https://shieldgloss.blogspot.com"
+  ]
+}
+</script>
+
+<!-- 이 페이지 자체를 기술 문서로 선언 — AI 인용 시 출처로 잡히게 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "@id": "https://www.shiled-line.com/coating-layers.html#article",
+  "headline": "유리막코팅 층 구조 — 싱글·듀얼·트리플 코팅은 도장면 위에 어떻게 올라가는가",
+  "description": "자동차 유리막코팅이 도장면 위에 쌓이는 순서와 각 층의 역할. G-PRO(경도)·F5(색감)·G-TOP(발수)의 단일 시공과 듀얼·트리플 조합을 단면 구조로 설명합니다.",
+  "inLanguage": "ko-KR",
+  "datePublished": "2026-07-22",
+  "dateModified": "2026-07-22",
+  "mainEntityOfPage": "https://www.shiled-line.com/coating-layers.html",
+  "author": {
+    "@type": "Person",
+    "name": "최한중",
+    "jobTitle": "대표 / 코팅제 개발자",
+    "description": "화학공학을 전공한 자동차 유리막코팅제 개발자이자 16년 경력의 현장 시공자."
+  },
+  "publisher": { "@id": "https://www.shiled-line.com/#business" },
+  "about": [
+    { "@type": "Thing", "name": "자동차 유리막코팅" },
+    { "@type": "Thing", "name": "듀얼코팅" },
+    { "@type": "Thing", "name": "트리플코팅" },
+    { "@type": "Thing", "name": "자동차 도장면 구조" }
+  ],
+  "articleSection": "자동차 유리막코팅"
+}
+</script>
+</head>
+<body>
+
+  <!-- ===================== HERO ===================== -->
+  <header class="hero">
+    <div class="beads" aria-hidden="true">
+      <span class="bead b1"></span><span class="bead b2"></span>
+      <span class="bead b3"></span><span class="bead b4"></span>
+      <span class="bead b5"></span>
+    </div>
+    <div class="wrap">
+      <a class="backlink" href="/">← 쉴드광택 홈</a>
+      <p class="eyebrow">코팅 단면 구조 · How it works</p>
+      <h1>코팅은 도장면 위에<br>이렇게 올라갑니다.<br><span class="soft">싱글 · 듀얼 · 트리플</span></h1>
+      <p class="lead">유리막코팅을 “한 번 바르는 것”으로 아는 분이 많습니다. 실제로는 <b>역할이 서로 다른 층을 정해진 순서로 쌓는</b> 작업입니다. 조합을 바꿔가며 단면이 어떻게 달라지는지 확인해 보세요.</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+
+      <!-- ============ 1. 단면 구조 ============ -->
+      <section class="sec">
+        <div class="sec-head">
+          <span class="sec-num mono">01</span>
+          <h2 class="sec-title">조합별 단면 구조</h2>
+        </div>
+
+        <div class="picker" role="group" aria-label="코팅 조합 선택">
+          <button class="pick" type="button" data-mode="none">무코팅</button>
+          <button class="pick" type="button" data-mode="gpro">싱글 · G-PRO</button>
+          <button class="pick" type="button" data-mode="f5">싱글 · F5</button>
+          <button class="pick" type="button" data-mode="gtop">싱글 · G-TOP</button>
+          <button class="pick" type="button" data-mode="dual">듀얼코팅</button>
+          <button class="pick" type="button" data-mode="triple">트리플코팅</button>
+        </div>
+        <p class="picker-note">＊ 아래 단면과 시험 결과가 선택한 조합에 맞춰 함께 바뀝니다</p>
+
+        <div class="specimen">
+          <div class="caliper" aria-hidden="true">
+            <div class="cal-seg" style="flex-grow:66"></div>
+            <div class="cal-seg" id="calCoat" style="flex-grow:1"><span>코팅층</span></div>
+            <div class="cal-seg" style="flex-grow:206"><span>도장면</span></div>
+          </div>
+
+          <div class="bands">
+            <div class="band band-air"><span class="band-name">공기</span></div>
+
+            <!-- 코팅층 : 위에서부터 G-TOP → F5 → G-PRO -->
+            <div class="band coat coat-gtop" id="lyrGtop">
+              <span class="band-name">G-TOP</span><span class="band-role">발수 · 방오</span>
+            </div>
+            <div class="band coat coat-f5" id="lyrF5">
+              <span class="band-name">F5</span><span class="band-role">색감 · 광택</span>
+            </div>
+            <div class="band coat coat-gpro" id="lyrGpro">
+              <span class="band-name">G-PRO</span><span class="band-role">경도 · 스크래치 내성</span>
+            </div>
+
+            <!-- 도장 구조 -->
+            <div class="band band-clear"><span class="band-name">클리어코트</span><span class="band-role">투명 보호층</span></div>
+            <div class="band band-base"><span class="band-name">베이스</span><span class="band-role">차량 색상</span></div>
+            <div class="band band-primer"><span class="band-name">프라이머</span><span class="band-role">밀착 · 방청</span></div>
+            <div class="band band-steel"><span class="band-name">철판</span><span class="band-role">차체</span></div>
+          </div>
+        </div>
+
+        <div class="readout"><p id="readout"></p></div>
+        <p class="scale-note">＊ 층의 두께는 이해를 돕기 위해 크게 과장했습니다. 실제 코팅층은 도장면보다 훨씬 얇습니다.</p>
+      </section>
+
+      <!-- ============ 2. 시험 ============ -->
+      <section class="sec">
+        <div class="sec-head">
+          <span class="sec-num mono">02</span>
+          <h2 class="sec-title">같은 도장면에 무엇이 닿을 때</h2>
+        </div>
+        <p class="body" style="margin-bottom:20px;">위에서 고른 조합 그대로, 물·스크래치·빛이 표면에 닿으면 어떻게 되는지입니다.</p>
+
+        <div class="tests">
+          <div class="test">
+            <div class="test-head">
+              <p class="test-title">물이 닿으면</p>
+              <p class="test-sub">발수 · 접촉각</p>
+            </div>
+            <div class="stage" id="stageWet">
+              <div class="drop drop-a"></div><div class="drop drop-b"></div><div class="drop drop-c"></div>
+              <div class="surf"></div>
+            </div>
+            <div class="test-foot"><span class="foot-k">결과</span><span class="foot-v" id="outWet"></span></div>
+          </div>
+
+          <div class="test">
+            <div class="test-head">
+              <p class="test-title">스크래치가 닿으면</p>
+              <p class="test-sub">경도 · 내스크래치</p>
+            </div>
+            <div class="stage" id="stageHard">
+              <div class="groove"></div><div class="spark"></div><div class="stylus"></div>
+              <div class="surf"></div>
+            </div>
+            <div class="test-foot"><span class="foot-k">결과</span><span class="foot-v" id="outHard"></span></div>
+          </div>
+
+          <div class="test">
+            <div class="test-head">
+              <p class="test-title">빛이 닿으면</p>
+              <p class="test-sub">색감 · 반사</p>
+            </div>
+            <div class="stage" id="stageDepth">
+              <div class="panel"><div class="gloss"></div></div>
+              <div class="surf"></div>
+            </div>
+            <div class="test-foot"><span class="foot-k">결과</span><span class="foot-v" id="outDepth"></span></div>
+          </div>
+        </div>
+
+        <div class="compare">
+          <h2 class="big" style="font-size:19px;margin-bottom:4px;">조합별 상대 비교</h2>
+          <p class="compare-note">절대 수치가 아니라, 조합끼리 견줬을 때의 상대적인 세기입니다.</p>
+          <div class="metric">
+            <span class="metric-k">경도·스크래치</span>
+            <div class="rail"><div class="fill fill-hard" id="barHard"></div></div>
+            <span class="metric-v" id="lblHard"></span>
+          </div>
+          <div class="metric">
+            <span class="metric-k">색감·깊이</span>
+            <div class="rail"><div class="fill fill-depth" id="barDepth"></div></div>
+            <span class="metric-v" id="lblDepth"></span>
+          </div>
+          <div class="metric">
+            <span class="metric-k">발수·방오</span>
+            <div class="rail"><div class="fill fill-wet" id="barWet"></div></div>
+            <span class="metric-v" id="lblWet"></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 3. 전처리 ============ -->
+      <section class="sec">
+        <div class="sec-head">
+          <span class="sec-num mono">03</span>
+          <h2 class="sec-title">층을 올리기 전에</h2>
+        </div>
+        <h2 class="big">코팅층보다 그 아래 도장면이 결과를 가릅니다</h2>
+        <p class="body">여기까지가 코팅층 이야기입니다. 그런데 유리막코팅의 결과를 실제로 가르는 건 <strong>그 아래 도장면</strong>입니다.</p>
+        <p class="body">위 그림에서 코팅층이 얹히는 자리는 클리어코트 표면입니다. 이 면을 전처리와 광택으로 평탄하게 만들지 않으면, 오염과 잔기스를 그대로 덮은 채 코팅이 굳습니다. 광택은 잠깐 살아 보여도 손상은 그 아래 남습니다.</p>
+        <p class="body">쉴드광택이 시공 시간의 대부분을 <strong>도장면 정리</strong>에 쓰는 이유입니다. 코팅제를 직접 개발·제조하기 때문에, 어떤 도장면에 어떤 층을 어떤 순서로 올릴지 판단해서 시공합니다.</p>
+
+        <div class="more">
+          <a href="/faq.html">자주 묻는 질문 →</a>
+          <a href="/#/products">제품 소개 →</a>
+          <a href="/#/price">서비스 단가 →</a>
+          <a href="/blog/">작업 일지 →</a>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section class="contact">
+    <div class="wrap">
+      <p class="eyebrow">방문 및 견적 문의</p>
+      <h2>차를 가장 좋은 컨디션으로<br>만들어 드립니다.</h2>
+
+      <div class="grid">
+        <div>
+          <p class="info-label">위치</p>
+          <p class="info-val">부산 남구 유엔로220 1층<br>쉴드광택 (Shield Gloss)</p>
+
+          <p class="info-label">전화 · 예약</p>
+          <p class="info-val"><a href="tel:010-3384-1850">010-3384-1850</a></p>
+        </div>
+
+        <div>
+          <p class="info-label">영업시간</p>
+          <table class="hours">
+            <tr><td>평일 (월–금)</td><td>09:00 – 18:00</td></tr>
+            <tr><td>토요일</td><td>10:00 – 16:00</td></tr>
+            <tr class="off"><td>일요일</td><td>휴무</td></tr>
+          </table>
+        </div>
+      </div>
+
+      <a class="cta" href="tel:010-3384-1850">📞 전화로 견적 문의하기</a>
+
+      <p class="slogan"><b>어떤 차를 타냐보다 어떻게 타냐가 중요합니다~!</b></p>
+    </div>
+  </section>
+
+  <footer class="legal">
+    <div class="wrap">© 쉴드광택 (Shield Gloss) · 부산 남구 유엔로220 1F · 010-3384-1850</div>
+  </footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* stack 배열은 도장면에서 가까운 순(아래 → 위) */
+  var MODES = {
+    none:{stack:[], hard:.14, depth:.22, wet:.10,
+      text:"출고 상태의 도장면입니다. <b>클리어코트가 가장 바깥층</b>이라, 오염과 스크래치를 도장면이 직접 받아냅니다. 세차 때 생기는 잔기스도 여기에 쌓입니다."},
+    gpro:{stack:["gpro"], hard:.86, depth:.38, wet:.44,
+      text:"경도가 높은 하드코팅을 한 겹 올린 상태입니다. <b>스크래치 내성</b>이 크게 올라가, 세차와 일상 주행에서 생기는 잔기스를 코팅층이 대신 받아냅니다."},
+    f5:{stack:["f5"], hard:.42, depth:.90, wet:.42,
+      text:"색감의 깊이와 글로시함에 특화된 층입니다. 빛이 표면에서 흩어지지 않고 <b>도장면 안쪽까지 들어갔다 반사</b>되면서, 특히 검정 계열에서 색이 깊어집니다."},
+    gtop:{stack:["gtop"], hard:.38, depth:.38, wet:.93,
+      text:"발수와 방오에 특화된 층입니다. 물이 넓게 퍼지지 않고 <b>구슬처럼 맺혀 흘러내리면서</b>, 물때와 오염이 표면에 눌어붙는 것을 줄여 줍니다."},
+    dual:{stack:["gpro","gtop"], hard:.88, depth:.52, wet:.95,
+      text:"<b>G-PRO로 바닥을 다지고 G-TOP으로 마감</b>합니다. 아래층이 스크래치를 받아내고 바깥층이 물과 오염을 막는, 보호 위주의 실용 조합입니다."},
+    triple:{stack:["gpro","f5","gtop"], hard:.90, depth:.95, wet:.96,
+      text:"<b>G-PRO 위에 F5로 색을 채우고, G-TOP으로 덮습니다.</b> 경도는 아래에서, 색감은 가운데에서, 발수는 바깥에서 각자 역할을 맡는 풀옵션 구성입니다."}
+  };
+
+  function grade(v, w){
+    if(v < .3) return w[0];
+    if(v < .55) return w[1];
+    if(v < .8) return w[2];
+    return w[3];
+  }
+  var W_WET   = ["넓게 퍼짐","조금 맺힘","둥글게 맺힘","구슬처럼 맺힘"];
+  var W_HARD  = ["자국이 남음","얕게 남음","거의 안 남음","튕겨냄"];
+  var W_DEPTH = ["표면에서 흩어짐","무난한 반사","또렷한 반사","깊게 반사"];
+  var W_BAR   = ["기본","보통","강함","최상"];
+
+  function $(id){ return document.getElementById(id); }
+  var buttons = Array.prototype.slice.call(document.querySelectorAll(".pick"));
+
+  function apply(id){
+    var m = MODES[id];
+    if(!m) return;
+
+    ["gtop","f5","gpro"].forEach(function(k){
+      var e = $("lyr" + k.charAt(0).toUpperCase() + k.slice(1));
+      if(e) e.classList.toggle("on", m.stack.indexOf(k) !== -1);
+    });
+
+    var cc = $("calCoat");
+    cc.style.flexGrow = Math.max(m.stack.length * 48, 1);
+    cc.classList.toggle("empty", m.stack.length === 0);
+
+    $("readout").innerHTML = m.text;
+
+    $("stageWet").style.setProperty("--wet", m.wet);
+    $("stageHard").style.setProperty("--hard", m.hard);
+    $("stageDepth").style.setProperty("--depth", m.depth);
+
+    $("outWet").textContent   = grade(m.wet, W_WET);
+    $("outHard").textContent  = grade(m.hard, W_HARD);
+    $("outDepth").textContent = grade(m.depth, W_DEPTH);
+
+    $("barHard").style.setProperty("--v", m.hard);
+    $("barDepth").style.setProperty("--v", m.depth);
+    $("barWet").style.setProperty("--v", m.wet);
+    $("lblHard").textContent  = grade(m.hard, W_BAR);
+    $("lblDepth").textContent = grade(m.depth, W_BAR);
+    $("lblWet").textContent   = grade(m.wet, W_BAR);
+
+    buttons.forEach(function(b){
+      b.setAttribute("aria-pressed", String(b.dataset.mode === id));
+    });
+  }
+
+  buttons.forEach(function(b){
+    b.addEventListener("click", function(){ apply(b.dataset.mode); });
+  });
+
+  apply("triple");
+})();
+</script>
+</body>
+</html>

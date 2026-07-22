@@ -23,10 +23,8 @@
 <!-- ============================================================
      쉴드광택 사업체 스키마 (JSON-LD)  ※ 모든 페이지 <head>에 공통 적용
      ------------------------------------------------------------
-     [남은 작업 — 선택]
-       · geo 좌표: 현재 대략값(35.1304, 129.0903). 구글지도에서 정확한
-         위도/경도 확인되면 교체 (주소가 정확해 필수는 아님)
-       · sameAs(YouTube·네이버블로그·인스타)는 반영 완료
+     우편번호(48529)·geo 좌표는 유엔로 220(대연동 565-10, 대원관)
+     실측값으로 확정 완료. sameAs는 유튜브·네이버블로그·인스타·블로거 반영.
      ============================================================ -->
 <script type="application/ld+json">
 {
@@ -58,12 +56,13 @@
         "streetAddress": "유엔로220 1층",
         "addressLocality": "남구",
         "addressRegion": "부산",
+        "postalCode": "48529",
         "addressCountry": "KR"
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": 35.1304,
-        "longitude": 129.0903
+        "latitude": 35.129811,
+        "longitude": 129.100345
       },
       "areaServed": { "@type": "City", "name": "부산" },
       "openingHoursSpecification": [
@@ -84,7 +83,8 @@
       "sameAs": [
         "https://www.youtube.com/@stingchoi5171",
         "https://blog.naver.com/shiledgt",
-        "https://www.instagram.com/sting_choi"
+        "https://www.instagram.com/sting_choi",
+        "https://shieldgloss.blogspot.com"
       ],
       "makesOffer": [
         { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "신차 유리막코팅" } },
@@ -154,6 +154,7 @@
                     <li><a href="#/services" class="nav-link">서비스소개</a></li>
                     <li><a href="#/certificates" class="nav-link">시공증명서</a></li>
                     <li><a href="#/partners" class="nav-link">전문점 소개</a></li>
+                    <li><a href="/coating-layers.html" class="nav-link">코팅 원리</a></li>
                     <li><a href="/faq.html" class="nav-link">자주 묻는 질문</a></li>
                     <li><a href="/blog/" class="nav-link">작업 일지</a></li>
                 </ul>
