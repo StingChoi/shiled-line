@@ -18,3 +18,4 @@ blog/videos/**/*_bad*.mp4
 blog/videos/**/zz_bad*.mp4
 publish_log*.txt
 auto_publish_log.txt
+auto_publish_run.log
