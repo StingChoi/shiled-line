@@ -116,6 +116,15 @@ a{color:inherit;}
 .cta-box .call{display:inline-flex;align-items:center;gap:9px;background:var(--aqua);color:#06262A;
   font-weight:800;font-size:16px;text-decoration:none;padding:14px 26px;border-radius:10px;transition:background .18s ease;}
 .cta-box .call:hover{background:#16D6DD;}
+.cta-box .cta-btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;}
+.cta-box .kakao{display:inline-flex;align-items:center;gap:9px;background:#FEE500;color:#3C1E1E;
+  font-weight:800;font-size:16px;text-decoration:none;padding:14px 26px;border-radius:10px;transition:background .18s ease;}
+.cta-box .kakao:hover{background:#FFD900;}
+.cta-box .kakao-note{font-size:14px;color:#AEB6BE;line-height:1.65;margin:16px 0 0;}
+@media(max-width:480px){
+  .cta-box .cta-btns{flex-direction:column;}
+  .cta-box .call,.cta-box .kakao{justify-content:center;}
+}
 .cta-box .biz{font-size:13px;color:var(--muted-dark);margin:18px 0 0;}
 
 /* 작업 전후 비교 */
