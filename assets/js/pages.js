@@ -486,6 +486,19 @@ const pages = {
                         <div id="cert-results-container" style="display: flex; flex-direction: column; gap: 1rem;">
                             <!-- Results will be injected here dynamically -->
                         </div>
+
+                        <!-- 리뷰 요청 — 조회가 성공했을 때만 app.js가 채운다.
+                             증명서를 확인하는 순간이 만족도가 가장 높은 시점이라 여기 둔다. -->
+                        <div id="cert-review-cta" style="display: none; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border-gold);">
+                            <p style="margin-bottom: 1rem; color: var(--text-muted, #9e9a90); font-size: 0.95rem; line-height: 1.6;">
+                                시공은 만족스러우셨나요?<br>
+                                짧은 후기 한 줄이 다음 고객님께 큰 도움이 됩니다.
+                            </p>
+                            <a id="cert-review-link" href="#" target="_blank" rel="noopener noreferrer"
+                               class="btn btn-primary" style="display: inline-block;">
+                                네이버에 후기 남기기
+                            </a>
+                        </div>
                     </div>
                     
                     <div id="cert-search-error" style="display: none; padding: 2rem; color: #ff6b6b;">

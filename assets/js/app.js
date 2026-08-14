@@ -277,7 +277,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
 
                     resultsContainer.innerHTML = html;
-                    
+
+                    // 리뷰 요청 — 조회된 시공의 지점에 맞는 플레이스로 보낸다.
+                    // 지점을 못 찾으면 대연점으로 보낸다(본점).
+                    const PLACE_IDS = {
+                        '대연': '2024246792',   // 부산 남구 유엔로220
+                        '괘법': '2140732843',   // 부산 사상구 사상로223번길40
+                    };
+                    const reviewBox = document.getElementById('cert-review-cta');
+                    const reviewLink = document.getElementById('cert-review-link');
+                    if (reviewBox && reviewLink) {
+                        const branchName = (docs.find(d => d.branch) || {}).branch || '';
+                        const key = Object.keys(PLACE_IDS).find(k => branchName.includes(k));
+                        const placeId = PLACE_IDS[key] || PLACE_IDS['대연'];
+                        reviewLink.href = `https://m.place.naver.com/place/${placeId}/review/visitor`;
+                        reviewBox.style.display = 'block';
+                    }
+
                     errorDiv.style.display = 'none';
                     resultDiv.style.display = 'block';
                     
@@ -286,6 +302,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     resultDiv.offsetHeight;
                     resultDiv.style.animation = 'fadeIn 0.5s ease forwards';
                 } else {
+                    const reviewBox = document.getElementById('cert-review-cta');
+                    if (reviewBox) reviewBox.style.display = 'none';
                     resultDiv.style.display = 'none';
                     errorDiv.style.display = 'block';
                 }

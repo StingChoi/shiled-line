@@ -21,6 +21,48 @@ DEFAULT_BRANCH = '쉴드 대연점'
 REGISTER_UID = 'cowork-auto'  # 자동 등록 표식(추적용)
 CUTOFF_DATE = '2026-07-14'    # 이 날짜 이전 시공건은 등록 안 함(기존 데이터 충돌 방지)
 
+# 네이버 플레이스 ID (리뷰 요청 링크용) — 2026-08-13 실물 확인
+#   대연: 부산 남구 유엔로220 1층 · '광택전문' · 사업자도구 연결됨
+#   괘법: 부산 사상구 사상로223번길40 · '썬팅,광택'
+#         ⚠ 소유권 인증이 안 된 상태다(지도에 "사장님, 플레이스를 무료로 직접
+#            관리하세요 · 권한 받기"가 뜬다). 인증 전에는 사진·영업시간·리뷰가
+#            비어 있어 검색에서 밀린다. 인증부터 받아야 이 링크가 값을 한다.
+PLACE_IDS = {
+    '대연': '2024246792',
+    '괘법': '2140732843',
+}
+CERT_URL = 'https://www.shiled-line.com/#/certificates?vin='
+
+
+def review_url(branch: str) -> str:
+    """지점명에 맞는 네이버 리뷰 작성 링크."""
+    pid = next((v for k, v in PLACE_IDS.items() if k in (branch or '') and v), '')
+    return f"https://m.place.naver.com/place/{pid or PLACE_IDS['대연']}/review/visitor"
+
+
+def kakao_message(rec: dict) -> str:
+    """고객에게 그대로 복붙해 보내는 카톡 문안.
+
+    증명서를 확인하는 순간이 만족도가 가장 높은 시점이라, 조회 링크와 후기 링크를
+    같이 보낸다. 후기 요청은 마지막에 짧게 — 부담을 주면 둘 다 안 누른다.
+    """
+    return (
+        f"[쉴드광택] {rec['car_type']} 시공증명서 등록 완료\n"
+        f"\n"
+        f"· 시공내용 : {rec['coating_type']}\n"
+        f"· 시공일   : {rec['install_date']}\n"
+        f"· 차대번호 : {rec['vin_number']}\n"
+        f"\n"
+        f"아래에서 정품 시공 내역을 바로 확인하실 수 있습니다.\n"
+        f"{CERT_URL}{rec['vin_number']}\n"
+        f"\n"
+        f"시공 후 3주간은 자동세차를 피해주시고,\n"
+        f"물기는 마른 수건으로 밀지 마시고 눌러서 닦아주세요.\n"
+        f"\n"
+        f"만족스러우셨다면 후기 한 줄 부탁드립니다.\n"
+        f"{review_url(rec.get('branch', ''))}"
+    )
+
 # 기존 DB 표기 관례에 맞춘 코팅종류 문자열
 COATING_MAP = {
     'F5':    'F5 도장채도 향상',
@@ -119,6 +161,19 @@ def main():
             except Exception as e:
                 print(f"     (QR 생성 실패: {e})")
     print(f"\n완료: {done}건 등록, QR {len(qr_done)}개 생성.")
+
+    # 고객 발송용 카톡 문안 — 그대로 복사해서 보내면 된다.
+    if to_write:
+        print('\n' + '=' * 78)
+        print('  고객 발송용 카톡 문안 (복사해서 보내세요)')
+        print('=' * 78)
+        for _, rec in to_write:
+            print('\n' + '-' * 78)
+            print(kakao_message(rec))
+        print('\n' + '-' * 78)
+        if not PLACE_IDS.get('괘법'):
+            print('※ 괘법점 네이버 플레이스 ID가 비어 있어 대연점 리뷰 링크로 나갑니다.')
+            print('  register_cert.py 의 PLACE_IDS 에 채워주세요.')
 
 if __name__ == '__main__':
     main()
