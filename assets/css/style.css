@@ -716,3 +716,74 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1.4rem;
   }
 }
+
+/* ===== 홈 최신 작업 일지 카드 (gen_latest_posts.py 가 채움) ===== */
+.post-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+  gap:1.5rem;
+}
+.post-card{
+  display:flex;
+  flex-direction:column;
+  background:var(--bg-card);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  border:1px solid var(--border-light);
+  border-radius:12px;
+  overflow:hidden;
+  text-decoration:none;
+  color:inherit;
+  transition:transform var(--transition-normal), border-color var(--transition-normal);
+}
+.post-card:hover{
+  transform:translateY(-5px);
+  border-color:var(--border-gold);
+  background:var(--bg-card-hover);
+}
+.pc-thumb{
+  display:block;
+  aspect-ratio:16/10;
+  background-size:cover;
+  background-position:center;
+  background-color:#0d1114;
+  border-bottom:1px solid var(--border-light);
+}
+.pc-body{
+  display:flex;
+  flex-direction:column;
+  gap:.55rem;
+  padding:1.4rem 1.4rem 1.6rem;
+}
+.pc-tag{
+  font-size:.72rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--primary);
+  font-weight:700;
+}
+.pc-title{
+  font-size:1.05rem;
+  font-weight:700;
+  line-height:1.45;
+  color:var(--text-main);
+  text-wrap:balance;
+}
+.pc-date{
+  font-size:.8rem;
+  color:var(--text-muted);
+  font-variant-numeric:tabular-nums;
+}
+.pc-sum{
+  font-size:.9rem;
+  line-height:1.65;
+  color:var(--text-muted);
+  display:-webkit-box;
+  -webkit-line-clamp:3;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+@media (max-width:520px){
+  .pc-body{padding:1.2rem 1.2rem 1.4rem;}
+  .pc-title{font-size:1rem;}
+}

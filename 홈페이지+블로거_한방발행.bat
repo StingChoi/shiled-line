@@ -1,5 +1,6 @@
 @echo off
-chcp 949 >nul
+chcp 65001 >nul
+set PYTHONIOENCODING=utf-8
 cd /d D:\shiled-line
 
 echo ============================================================
@@ -16,6 +17,8 @@ echo.
 echo  [2/4] 홈페이지에 올립니다 (GitHub Push)...
 echo.
 
+py gen_sitemap.py
+py gen_latest_posts.py
 git add -A
 git commit -m "auto: new blog posts"
 git push

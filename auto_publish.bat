@@ -8,6 +8,7 @@ py upload_videos.py --all
 
 echo [auto_publish] 2/4 GitHub push...
 py gen_sitemap.py
+py gen_latest_posts.py
 git add -A
 git commit -m "auto: new blog posts"
 git push
