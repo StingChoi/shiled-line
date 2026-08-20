@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>리뷰 남기기 | 쉴드광택</title>
+<meta name="robots" content="noindex, follow" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+<script src="/assets/js/analytics.js" defer></script>
+
+<!-- ============================================================
+     리뷰 요청 카드(인쇄물) QR의 착지 페이지
+     ------------------------------------------------------------
+     ★ 목적지를 바꾸려면 아래 DEST 한 줄만 고치면 됩니다.
+       인쇄한 카드는 그대로 쓸 수 있습니다. 다시 인쇄할 필요 없습니다.
+
+     ⚠️ 2026-08-20 현재 네이버 플레이스 주소가 확인되지 않았습니다.
+       (map.naver.com/p/entry/place/11977421 → 404)
+       확인된 주소를 넣기 전까지는 안내 화면만 보여주고 자동 이동하지 않습니다.
+     ============================================================ -->
+<script>
+  // ↓↓↓ 확인된 네이버 플레이스 주소를 여기에 넣으세요 ↓↓↓
+  var DEST = '';
+  // ↑↑↑ 넣는 즉시 QR을 찍으면 곧바로 네이버로 넘어갑니다 ↑↑↑
+</script>
+
+<style>
+  :root{
+    --ink:#14171B; --paper:#F3F4F1; --card:#FFFFFF; --line:#E4E6E1;
+    --text:#181B1F; --muted:#5C636B; --aqua:#13C2C9; --aqua-deep:#0B8E94;
+    --gold:#B98A2E;
+    --shadow:0 1px 2px rgba(20,23,27,.04), 0 10px 28px rgba(20,23,27,.08);
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+    padding:28px 20px;
+    font-family:"Pretendard","Pretendard Variable",system-ui,sans-serif;
+    background:var(--paper); color:var(--text); line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .box{
+    width:100%; max-width:420px; background:var(--card);
+    border:1px solid var(--line); border-radius:16px;
+    padding:34px 26px 28px; box-shadow:var(--shadow); text-align:center;
+  }
+  .badge{width:62px;height:auto;margin:0 auto 18px;display:block;}
+  .eyebrow{
+    font-size:11.5px; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--gold); font-weight:700; margin:0 0 10px;
+  }
+  h1{font-size:23px; font-weight:800; letter-spacing:-.02em; margin:0 0 14px; line-height:1.35;}
+  p.lead{font-size:15px; color:#33383E; margin:0 0 24px;}
+  p.lead b{color:var(--ink); font-weight:700;}
+
+  .btn{
+    display:block; width:100%; padding:16px 20px; border-radius:11px;
+    font-size:16px; font-weight:800; text-decoration:none; border:none; cursor:pointer;
+    font-family:inherit; transition:transform .15s ease, background .15s ease;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-naver{background:#03C75A; color:#fff; margin-bottom:10px;}
+  .btn-naver:hover{background:#02b350;}
+  .btn-ghost{
+    background:transparent; color:var(--muted); font-weight:600; font-size:14.5px;
+    border:1px solid var(--line); padding:13px 20px;
+  }
+  .btn-ghost:hover{border-color:var(--aqua); color:var(--aqua-deep);}
+
+  .steps{
+    text-align:left; background:#FAFBFA; border:1px solid var(--line);
+    border-radius:11px; padding:16px 18px; margin:0 0 20px;
+  }
+  .steps p{margin:0 0 8px; font-size:11.5px; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--aqua-deep); font-weight:700;}
+  .steps ol{margin:0; padding-left:19px; font-size:14px; color:#33383E;}
+  .steps li{margin-bottom:5px;}
+  .steps li:last-child{margin-bottom:0;}
+
+  .pending{
+    background:#FFF8E8; border:1px solid #EFD9A6; border-radius:11px;
+    padding:15px 17px; margin:0 0 20px; text-align:left;
+    font-size:14px; color:#6B5518; line-height:1.65;
+  }
+  .foot{margin:22px 0 0; padding-top:16px; border-top:1px solid var(--line);
+    font-size:13px; color:var(--muted); line-height:1.7;}
+  .foot a{color:var(--aqua-deep); text-decoration:none; font-weight:600;}
+  :focus-visible{outline:2px solid var(--aqua); outline-offset:3px; border-radius:6px;}
+  @media (prefers-reduced-motion:reduce){*{transition:none !important;}}
+</style>
+</head>
+<body>
+
+<div class="box">
+  <img class="badge" src="/assets/images/shiled_badge_v2.png" alt="쉴드광택" width="62" height="69">
+  <p class="eyebrow">Shield Gloss · 쉴드광택</p>
+
+  <h1 id="hd">시공은 만족스러우셨습니까?</h1>
+  <p class="lead" id="ld">짧게 <b>한 줄</b>이면 충분합니다.<br>다음 손님에게 가장 정확한 설명이 됩니다.</p>
+
+  <div class="steps" id="steps">
+    <p>리뷰 작성 방법</p>
+    <ol>
+      <li>아래 버튼으로 네이버 플레이스 열기</li>
+      <li>「리뷰」 탭 선택</li>
+      <li>결제 영수증으로 방문 인증 후 작성</li>
+    </ol>
+  </div>
+
+  <div class="pending" id="pending" hidden>
+    <b>안내</b> — 리뷰 페이지 연결을 준비 중입니다.<br>
+    네이버에서 <b>「쉴드광택」</b> 으로 검색하시면 바로 찾으실 수 있습니다.
+    번거롭게 해드려 죄송합니다.
+  </div>
+
+  <a class="btn btn-naver" id="go" href="#">네이버에서 리뷰 남기기</a>
+  <a class="btn btn-ghost" href="/#/certificates">시공증명서 조회하기</a>
+
+  <p class="foot">
+    쉴드광택 · 부산 남구 유엔로 220, 대원관 1층<br>
+    <a href="tel:010-3384-1850">010-3384-1850</a> · <a href="/">홈페이지</a>
+  </p>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var go = document.getElementById('go');
+
+  function track(name, params) {
+    if (window.shiledTrack) window.shiledTrack(name, params || {});
+  }
+
+  if (DEST) {
+    go.href = DEST;
+    go.setAttribute('rel', 'noopener');
+    go.addEventListener('click', function () {
+      track('review_click', { destination: 'naver_place' });
+    });
+
+    // QR로 들어온 손님을 붙잡아두지 않는다. 잠깐 보여주고 바로 넘긴다.
+    track('review_landing', { auto_redirect: true });
+    setTimeout(function () { location.replace(DEST); }, 1200);
+
+  } else {
+    // 목적지 미설정 — 자동 이동하지 않고 안내만 한다.
+    document.getElementById('pending').hidden = false;
+    document.getElementById('steps').hidden = true;
+    go.href = 'https://search.naver.com/search.naver?query=' +
+              encodeURIComponent('쉴드광택 부산 남구');
+    go.textContent = '네이버에서 「쉴드광택」 검색하기';
+    go.setAttribute('rel', 'noopener');
+    go.addEventListener('click', function () {
+      track('review_click', { destination: 'naver_search_fallback' });
+    });
+    track('review_landing', { auto_redirect: false });
+  }
+})();
+</script>
+
+</body>
+</html>
