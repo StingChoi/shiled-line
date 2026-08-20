@@ -43,6 +43,12 @@ document.addEventListener('DOMContentLoaded', () => {
             hash = hash.substring(0, qIdx);
         }
 
+        // 서비스 단가는 정적 페이지(price.html)로 이관됨 — 옛 해시 링크 구제
+        if (hash === 'price') {
+            window.location.replace('/price.html');
+            return;
+        }
+
         // --- RBAC Route Guards ---
         const user = window.auth ? window.auth.currentUser : null;
         if (hash === 'admin' && !user) {

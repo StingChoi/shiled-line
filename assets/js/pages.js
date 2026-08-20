@@ -29,7 +29,7 @@ const pages = {
                 <h1 class="hero-title">어떤 차를 타냐보다<br><span class="gradient-text">어떻게 타냐</span>가 중요합니다!</h1>
                 <p class="hero-desc">
                     16년 경력의 코팅제 개발자가 직접 시공합니다.<br>
-                    벤츠 부산 남천점 공식 상조업체 · 자체 개발 유리막코팅제 F5 · G-PRO · G-TOP
+                    벤츠 부산 남천점 공식 협력업체 · 자체 개발 유리막코팅제 F5 · G-PRO · G-TOP
                 </p>
                 <div class="hero-cta">
                     <a href="#/services" class="btn btn-primary">시공 안내 보기</a>
@@ -58,8 +58,8 @@ const pages = {
                     </div>
                     <div class="glass-card text-center">
                         <div style="font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem;">⭐</div>
-                        <h3 class="mb-4">벤츠 공식 상조업체</h3>
-                        <p class="text-muted">메르세데스-벤츠 부산 남천점 공식 상조업체로 신차 출고 전 최고의 외장 컨디션을 책임집니다.</p>
+                        <h3 class="mb-4">벤츠 공식 협력업체</h3>
+                        <p class="text-muted">메르세데스-벤츠 부산 남천점 공식 협력업체로 신차 출고 전 최고의 외장 컨디션을 책임집니다.</p>
                     </div>
                 </div>
             </div>
@@ -155,12 +155,12 @@ const pages = {
                         </p>
                         <p class="about-paragraph" style="margin-bottom: 2rem;">
                             특히, 저희가 직접 개발·생산하는 전용 유리막코팅제(F5 · G-PRO · G-TOP)는 압도적인 퍼포먼스를 보장하며,
-                            메르세데스-벤츠 부산 남천점 공식 상조업체로서 신차 출고 전 최고의 외장 컨디션을 만들어드립니다.
+                            메르세데스-벤츠 부산 남천점 공식 협력업체로서 신차 출고 전 최고의 외장 컨디션을 만들어드립니다.
                         </p>
                         
                         <div class="about-info-card">
                             <h4>⭐ 공식 협력</h4>
-                            <p>메르세데스-벤츠 부산 남천점 공식 상조업체</p>
+                            <p>메르세데스-벤츠 부산 남천점 공식 협력업체</p>
                             
                             <h4>📌 오시는 길</h4>
                             <p>부산 남구 유엔로220 1F (쉴드광택)</p>
