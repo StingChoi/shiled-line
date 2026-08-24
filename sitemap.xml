@@ -26,7 +26,7 @@
   </url>
   <url>
     <loc>https://www.shiled-line.com/blog/</loc>
-    <lastmod>2026-08-22</lastmod>
+    <lastmod>2026-08-25</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1411,6 +1411,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.shiled-line.com/blog/bmw-ix3-0824-newcar-f5-coating-black.html</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.shiled-line.com/blog/bmw-ix3-gtop-coating.html</loc>
     <lastmod>2026-08-20</lastmod>
     <changefreq>monthly</changefreq>
@@ -1455,6 +1461,12 @@
   <url>
     <loc>https://www.shiled-line.com/blog/bmw-x5-0822-oilfilm-removal.html</loc>
     <lastmod>2026-08-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.shiled-line.com/blog/bmw-x5-0824-newcar-f5-coating-blue.html</loc>
+    <lastmod>2026-08-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
