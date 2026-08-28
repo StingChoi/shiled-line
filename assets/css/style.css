@@ -787,3 +787,99 @@ h1, h2, h3, h4, h5, h6 {
   .pc-body{padding:1.2rem 1.2rem 1.4rem;}
   .pc-title{font-size:1rem;}
 }
+
+/* ===== 누적 시공 카운터 밴드 (stats-counter.js 가 숫자를 채움) ===== */
+.stats-band{
+  position:relative;
+  padding:3.5rem 0 3rem;
+  background:
+    radial-gradient(120% 140% at 50% 0%, rgba(203,163,101,.07) 0%, transparent 60%),
+    var(--bg-darker);
+  border-top:1px solid var(--border-light);
+  border-bottom:1px solid var(--border-light);
+}
+/* 위아래 금색 헤어라인 — 가운데만 밝게 */
+.stats-band::before,
+.stats-band::after{
+  content:"";position:absolute;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(203,163,101,.55),transparent);
+}
+.stats-band::before{top:-1px;}
+.stats-band::after{bottom:-1px;}
+
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1rem;
+}
+.stat{
+  display:flex;flex-direction:column;align-items:center;gap:.6rem;
+  padding:0 .75rem;text-align:center;
+  border-left:1px solid var(--border-light);
+}
+.stat:first-child{border-left:none;}
+
+.stat-num{
+  font-family:'Inter',var(--font-body),sans-serif;
+  font-size:clamp(2rem,5.2vw,3.1rem);
+  font-weight:700;
+  line-height:1;
+  letter-spacing:-.02em;
+  color:var(--text-main);
+  font-variant-numeric:tabular-nums;
+  display:inline-flex;align-items:baseline;gap:.15em;
+}
+.stat-num i{
+  font-style:normal;
+  font-size:.42em;
+  font-weight:600;
+  color:var(--text-muted);
+  letter-spacing:0;
+}
+.stat-label{
+  font-size:.82rem;
+  line-height:1.5;
+  color:var(--text-muted);
+  letter-spacing:.01em;
+}
+
+/* 가운데(누적 시공)만 금색으로 — 시선이 여기 머물게 */
+.stat-lead .stat-num{
+  color:var(--primary);
+  text-shadow:0 0 32px var(--primary-glow);
+  font-size:clamp(2.4rem,6.4vw,3.9rem);
+}
+.stat-lead .stat-num i{color:rgba(203,163,101,.7);}
+.stat-lead .stat-label{color:#c9cdd3;}
+
+.stats-note{
+  margin:2.4rem auto 0;
+  max-width:46rem;
+  text-align:center;
+  font-size:.88rem;
+  line-height:1.75;
+  color:var(--text-muted);
+}
+.stats-note b{color:var(--text-main);font-weight:600;}
+.stats-note a{
+  color:var(--primary);
+  text-decoration:none;
+  font-weight:600;
+  white-space:nowrap;
+  border-bottom:1px solid transparent;
+  transition:border-color var(--transition-fast);
+}
+.stats-note a:hover{border-bottom-color:var(--primary);}
+
+@media (max-width:640px){
+  .stats-band{padding:2.6rem 0 2.2rem;}
+  .stats-grid{
+    grid-template-columns:1fr;
+    gap:1.75rem;
+  }
+  .stat{border-left:none;padding:0;}
+  /* 세로로 쌓일 땐 가운데 항목을 맨 위로 올려 먼저 보이게 */
+  .stat-lead{order:-1;}
+  .stat-label{font-size:.86rem;}
+  .stats-note{margin-top:2rem;font-size:.85rem;}
+}

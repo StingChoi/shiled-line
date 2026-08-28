@@ -19,7 +19,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap"
         rel="stylesheet">
 
-    <link rel="stylesheet" href="assets/css/style.css?v=20260820">
+    <link rel="stylesheet" href="assets/css/style.css?v=20260828">
 <!-- ============================================================
      쉴드광택 사업체 스키마 (JSON-LD)  ※ 모든 페이지 <head>에 공통 적용
      ------------------------------------------------------------
@@ -191,6 +191,31 @@
                     <a href="tel:01033841850" class="btn btn-outline">📞 010-3384-1850</a>
                     <a href="http://pf.kakao.com/_xexfYVX/chat" target="_blank" rel="noopener noreferrer" class="btn btn-outline">💬 카톡 상담</a>
                 </div>
+            </div>
+        </section>
+
+        <!-- 누적 시공 카운터 — 숫자는 stats-counter.js 가 Firestore(stats/summary)에서 읽어 채운다.
+             HTML 의 값은 읽기 실패 시 그대로 보일 기본값이다(빈 화면 방지). -->
+        <section class="stats-band">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat">
+                        <span class="stat-num">16<i>년</i></span>
+                        <span class="stat-label">코팅제 직접 개발</span>
+                    </div>
+                    <div class="stat stat-lead">
+                        <span class="stat-num"><span id="statCertCount" data-fallback="3183">3,183</span><i>대</i></span>
+                        <span class="stat-label">누적 시공 · 증명서 발급 기준</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-num">3<i>종</i></span>
+                        <span class="stat-label">자체 개발 유리막코팅제</span>
+                    </div>
+                </div>
+                <p class="stats-note">
+                    모든 시공 차량에 <b>차대번호와 코팅제 시리얼</b>이 기재된 시공증명서를 발급합니다.
+                    <a href="#/certificates">내 차 증명서 조회 →</a>
+                </p>
             </div>
         </section>
 
@@ -460,6 +485,7 @@
 
     <!-- Application Scripts -->
     <script src="assets/js/firebase-config.js"></script>
+    <script src="assets/js/stats-counter.js" defer></script>
     <script src="assets/js/pages.js?v=1.1"></script>
     <script src="assets/js/app.js?v=1.1"></script>
 </body>

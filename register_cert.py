@@ -162,6 +162,14 @@ def main():
                 print(f"     (QR 생성 실패: {e})")
     print(f"\n완료: {done}건 등록, QR {len(qr_done)}개 생성.")
 
+    # 홈페이지 '누적 시공' 카운터 갱신 (stats/summary)
+    # 프론트가 컬렉션 전체를 읽지 않도록 집계값을 문서 하나에 적어둔다.
+    try:
+        import update_stats
+        update_stats.main()
+    except Exception as e:
+        print(f"  (집계 갱신 실패 — 홈 카운터는 이전 값 유지: {e})")
+
     # 고객 발송용 카톡 문안 — 그대로 복사해서 보내면 된다.
     if to_write:
         print('\n' + '=' * 78)
