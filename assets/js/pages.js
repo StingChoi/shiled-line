@@ -74,7 +74,7 @@ const pages = {
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-bottom: 3rem;">
                     <a href="https://blog.naver.com/shiledgt" target="_blank" class="glass-card" style="padding:0;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;">
                         <div style="height:200px;overflow:hidden;">
-                            <img src="assets/images/260428 GLE350 검정 광택/작업후-01.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                            <img src="assets/images/260428 GLE350 검정 광택/작업후-10.jpg" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
                         </div>
                         <div style="padding:1.5rem;flex:1;display:flex;flex-direction:column;">
                             <span style="color:var(--primary);font-size:0.8rem;margin-bottom:0.5rem;">벤츠 GLE · 신차코팅</span>
@@ -119,7 +119,7 @@ const pages = {
                 <div class="about-grid">
                     <div>
                         <div class="about-main-img-wrapper">
-                            <img src="assets/images/260428 GLE350 검정 광택/작업후-01.jpg" alt="벤츠 GLE 시공 완료" class="about-main-img">
+                            <img src="assets/images/260428 GLE350 검정 광택/작업후-10.jpg" alt="벤츠 GLE 시공 완료" class="about-main-img">
                         </div>
                         <div class="about-thumb-grid">
                             <div class="about-thumb-item">
@@ -268,7 +268,7 @@ const pages = {
     `,
     services: `
         <div class="page-header" style="position: relative; overflow: hidden; padding: 10rem 0 4rem;">
-            <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(to bottom, rgba(4,5,6,0.8), rgba(4,5,6,1)), url('assets/images/20260225_143216.jpg') center/cover; z-index: -1;"></div>
+            <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(to bottom, rgba(4,5,6,0.8), rgba(4,5,6,1)), url('assets/images/20260225_153047.jpg') center/cover; z-index: -1;"></div>
             <h1 class="page-title">서비스소개</h1>
             <p class="page-desc">PREMIUM SERVICES</p>
         </div>
@@ -439,26 +439,26 @@ const pages = {
                         </div>
                         <div style="padding:1.2rem;"><span style="color:var(--primary);font-size:0.8rem;font-weight:700;letter-spacing:2px;">BENZ GLE · COATING</span><h4 style="margin-top:0.3rem;">후드 광택 · 유리막코팅</h4></div>
                     </div>
-                    <div class="glass-card" style="padding:0;overflow:hidden;cursor:pointer;" onclick="window.openProductGallery('assets/images/260428 GLE350 검정 광택/작업전-01.jpg','assets/images/260428 GLE350 검정 광택/작업후-01.jpg')">
+                    <div class="glass-card" style="padding:0;overflow:hidden;cursor:pointer;" onclick="window.openProductGallery('assets/images/260428 GLE350 검정 광택/작업전-10.jpg','assets/images/260428 GLE350 검정 광택/작업후-10.jpg')">
                         <div style="display:grid;grid-template-columns:1fr 1fr;height:220px;">
-                            <div style="position:relative;overflow:hidden;"><img src="assets/images/260428 GLE350 검정 광택/작업전-01.jpg" style="width:100%;height:100%;object-fit:cover;"><span style="position:absolute;top:8px;left:8px;background:rgba(0,0,0,0.75);color:#fff;padding:3px 10px;border-radius:4px;font-size:0.75rem;font-weight:700;">BEFORE</span></div>
-                            <div style="position:relative;overflow:hidden;"><img src="assets/images/260428 GLE350 검정 광택/작업후-01.jpg" style="width:100%;height:100%;object-fit:cover;"><span style="position:absolute;top:8px;right:8px;background:var(--primary);color:#000;padding:3px 10px;border-radius:4px;font-size:0.75rem;font-weight:700;">AFTER</span></div>
+                            <div style="position:relative;overflow:hidden;"><img src="assets/images/260428 GLE350 검정 광택/작업전-10.jpg" style="width:100%;height:100%;object-fit:cover;"><span style="position:absolute;top:8px;left:8px;background:rgba(0,0,0,0.75);color:#fff;padding:3px 10px;border-radius:4px;font-size:0.75rem;font-weight:700;">BEFORE</span></div>
+                            <div style="position:relative;overflow:hidden;"><img src="assets/images/260428 GLE350 검정 광택/작업후-10.jpg" style="width:100%;height:100%;object-fit:cover;"><span style="position:absolute;top:8px;right:8px;background:var(--primary);color:#000;padding:3px 10px;border-radius:4px;font-size:0.75rem;font-weight:700;">AFTER</span></div>
                         </div>
-                        <div style="padding:1.2rem;"><span style="color:var(--primary);font-size:0.8rem;font-weight:700;letter-spacing:2px;">BENZ GLE · NEW CAR</span><h4 style="margin-top:0.3rem;">벤츠 GLE 신차 광택 · 유리막코팅</h4></div>
+                        <div style="padding:1.2rem;"><span style="color:var(--primary);font-size:0.8rem;font-weight:700;letter-spacing:2px;">BENZ GLE · MIRROR</span><h4 style="margin-top:0.3rem;">벤츠 GLE 신차 광택 · 유리막코팅</h4></div>
                     </div>
-                    <div class="glass-card" style="padding:0;overflow:hidden;cursor:pointer;" onclick="window.openProductGallery('assets/images/260418 F150 페인트 날림제거/before-04.jpg','assets/images/260418 F150 페인트 날림제거/after-04.jpg')">
+                    <div class="glass-card" style="padding:0;overflow:hidden;cursor:pointer;" onclick="window.openProductGallery('assets/images/260428 GLE350 검정 광택/작업전-17.jpg','assets/images/260428 GLE350 검정 광택/작업후-17.jpg')">
                         <div style="display:grid;grid-template-columns:1fr 1fr;height:220px;">
-                            <div style="position:relative;overflow:hidden;"><img src="assets/images/260418 F150 페인트 날림제거/before-04.jpg" style="width:100%;height:100%;object-fit:cover;"><span style="position:absolute;top:8px;left:8px;background:rgba(0,0,0,0.75);color:#fff;padding:3px 10px;border-radius:4px;font-size:0.75rem;font-weight:700;">BEFORE</span></div>
-                            <div style="position:relative;overflow:hidden;"><img src="assets/images/260418 F150 페인트 날림제거/after-04.jpg" style="width:100%;height:100%;object-fit:cover;"><span style="position:absolute;top:8px;right:8px;background:var(--primary);color:#000;padding:3px 10px;border-radius:4px;font-size:0.75rem;font-weight:700;">AFTER</span></div>
+                            <div style="position:relative;overflow:hidden;"><img src="assets/images/260428 GLE350 검정 광택/작업전-17.jpg" style="width:100%;height:100%;object-fit:cover;"><span style="position:absolute;top:8px;left:8px;background:rgba(0,0,0,0.75);color:#fff;padding:3px 10px;border-radius:4px;font-size:0.75rem;font-weight:700;">BEFORE</span></div>
+                            <div style="position:relative;overflow:hidden;"><img src="assets/images/260428 GLE350 검정 광택/작업후-17.jpg" style="width:100%;height:100%;object-fit:cover;"><span style="position:absolute;top:8px;right:8px;background:var(--primary);color:#000;padding:3px 10px;border-radius:4px;font-size:0.75rem;font-weight:700;">AFTER</span></div>
                         </div>
-                        <div style="padding:1.2rem;"><span style="color:var(--primary);font-size:0.8rem;font-weight:700;letter-spacing:2px;">FORD F-150 · PAINT</span><h4 style="margin-top:0.3rem;">F-150 페인트 날림제거 · 광택</h4></div>
+                        <div style="padding:1.2rem;"><span style="color:var(--primary);font-size:0.8rem;font-weight:700;letter-spacing:2px;">BENZ GLE · PILLAR</span><h4 style="margin-top:0.3rem;">F-150 페인트 날림제거 · 광택</h4></div>
                     </div>
-                    <div class="glass-card" style="padding:0;overflow:hidden;cursor:pointer;" onclick="window.openProductGallery('assets/images/260418 F150 페인트 날림제거/before-06.jpg','assets/images/260418 F150 페인트 날림제거/after-06.jpg')">
+                    <div class="glass-card" style="padding:0;overflow:hidden;cursor:pointer;" onclick="window.openProductGallery('assets/images/260428 GLE350 검정 광택/작업전-05.jpg','assets/images/260428 GLE350 검정 광택/작업후-05.jpg')">
                         <div style="display:grid;grid-template-columns:1fr 1fr;height:220px;">
-                            <div style="position:relative;overflow:hidden;"><img src="assets/images/260418 F150 페인트 날림제거/before-06.jpg" style="width:100%;height:100%;object-fit:cover;"><span style="position:absolute;top:8px;left:8px;background:rgba(0,0,0,0.75);color:#fff;padding:3px 10px;border-radius:4px;font-size:0.75rem;font-weight:700;">BEFORE</span></div>
-                            <div style="position:relative;overflow:hidden;"><img src="assets/images/260418 F150 페인트 날림제거/after-06.jpg" style="width:100%;height:100%;object-fit:cover;"><span style="position:absolute;top:8px;right:8px;background:var(--primary);color:#000;padding:3px 10px;border-radius:4px;font-size:0.75rem;font-weight:700;">AFTER</span></div>
+                            <div style="position:relative;overflow:hidden;"><img src="assets/images/260428 GLE350 검정 광택/작업전-05.jpg" style="width:100%;height:100%;object-fit:cover;"><span style="position:absolute;top:8px;left:8px;background:rgba(0,0,0,0.75);color:#fff;padding:3px 10px;border-radius:4px;font-size:0.75rem;font-weight:700;">BEFORE</span></div>
+                            <div style="position:relative;overflow:hidden;"><img src="assets/images/260428 GLE350 검정 광택/작업후-05.jpg" style="width:100%;height:100%;object-fit:cover;"><span style="position:absolute;top:8px;right:8px;background:var(--primary);color:#000;padding:3px 10px;border-radius:4px;font-size:0.75rem;font-weight:700;">AFTER</span></div>
                         </div>
-                        <div style="padding:1.2rem;"><span style="color:var(--primary);font-size:0.8rem;font-weight:700;letter-spacing:2px;">FORD F-150 · DETAIL</span><h4 style="margin-top:0.3rem;">F-150 도장면 복원 · 유리막코팅</h4></div>
+                        <div style="padding:1.2rem;"><span style="color:var(--primary);font-size:0.8rem;font-weight:700;letter-spacing:2px;">BENZ GLE · REAR</span><h4 style="margin-top:0.3rem;">F-150 도장면 복원 · 유리막코팅</h4></div>
                     </div>
                 </div>
             </div>

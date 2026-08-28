@@ -883,3 +883,118 @@ h1, h2, h3, h4, h5, h6 {
   .stat-label{font-size:.86rem;}
   .stats-note{margin-top:2rem;font-size:.85rem;}
 }
+
+/* ===== 시공 전후 비교 슬라이더 (before-after.js 가 --p 를 움직임) ===== */
+.ba-section{border-top:1px solid var(--border-light);}
+.ba-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:2rem;
+}
+.ba{margin:0;}
+
+.ba-view{
+  --p:50%;
+  position:relative;
+  aspect-ratio:4/3;
+  border-radius:12px;
+  overflow:hidden;
+  border:1px solid var(--border-light);
+  background:#0d1114;
+  isolation:isolate;
+}
+.ba-img{position:absolute;inset:0;display:block;}
+.ba-img img{width:100%;height:100%;object-fit:cover;display:block;}
+
+/* 시공 전 사진을 손잡이 위치까지만 남기고 잘라낸다.
+   clip-path 는 리페인트가 없어 끌 때 매끄럽다. */
+.ba-before{clip-path:inset(0 calc(100% - var(--p)) 0 0);}
+
+/* 경계선 + 손잡이 */
+.ba-line{
+  position:absolute;top:0;bottom:0;left:var(--p);
+  width:2px;margin-left:-1px;
+  background:rgba(255,255,255,.9);
+  box-shadow:0 0 12px rgba(0,0,0,.55);
+  pointer-events:none;z-index:3;
+}
+.ba-line i{
+  position:absolute;top:50%;left:50%;
+  width:42px;height:42px;margin:-21px 0 0 -21px;
+  border-radius:50%;
+  background:rgba(12,14,17,.72);
+  border:2px solid rgba(255,255,255,.92);
+  backdrop-filter:blur(4px);
+  -webkit-backdrop-filter:blur(4px);
+  display:grid;place-items:center;
+}
+/* 좌우 화살표 — 끌 수 있다는 신호 */
+.ba-line i::before,
+.ba-line i::after{
+  content:"";position:absolute;
+  width:0;height:0;
+  border-top:5px solid transparent;
+  border-bottom:5px solid transparent;
+}
+.ba-line i::before{border-right:7px solid #fff;left:9px;}
+.ba-line i::after{border-left:7px solid #fff;right:9px;}
+
+/* 실제 조작은 range 가 맡는다. 눈에는 안 보이되 손·키보드는 닿는다. */
+.ba-range{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  margin:0;padding:0;
+  background:transparent;
+  border:none;
+  appearance:none;-webkit-appearance:none;
+  cursor:ew-resize;
+  z-index:4;
+}
+.ba-range::-webkit-slider-thumb{
+  -webkit-appearance:none;
+  width:48px;height:100%;
+  background:transparent;cursor:ew-resize;
+}
+.ba-range::-moz-range-thumb{
+  width:48px;height:220px;
+  background:transparent;border:none;cursor:ew-resize;
+}
+.ba-range:focus-visible{outline:2px solid var(--primary);outline-offset:3px;}
+
+/* 전 / 후 라벨 */
+.ba-tag{
+  position:absolute;top:.85rem;
+  font-size:.72rem;font-weight:700;letter-spacing:.08em;
+  padding:.32rem .6rem;border-radius:6px;
+  background:rgba(12,14,17,.78);
+  color:#fff;z-index:2;pointer-events:none;
+}
+.ba-tag-b{left:.85rem;}
+.ba-tag-a{right:.85rem;color:var(--primary);}
+
+.ba figcaption{
+  display:flex;flex-direction:column;gap:.28rem;
+  padding:1rem .2rem 0;
+}
+.ba-cat{
+  font-size:.72rem;font-weight:700;letter-spacing:.14em;
+  color:var(--primary);
+}
+.ba-part{font-size:1.05rem;font-weight:700;color:var(--text-main);}
+.ba-desc{font-size:.86rem;line-height:1.6;color:var(--text-muted);}
+
+.ba-note{
+  margin:2.6rem auto 0;text-align:center;
+  font-size:.88rem;color:var(--text-muted);
+}
+.ba-note a{
+  color:var(--primary);text-decoration:none;font-weight:600;white-space:nowrap;
+  border-bottom:1px solid transparent;transition:border-color var(--transition-fast);
+}
+.ba-note a:hover{border-bottom-color:var(--primary);}
+
+@media (max-width:640px){
+  .ba-grid{grid-template-columns:1fr;gap:1.6rem;}
+  .ba-line i{width:38px;height:38px;margin:-19px 0 0 -19px;}
+  .ba-note{margin-top:2rem;}
+}
