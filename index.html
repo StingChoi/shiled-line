@@ -440,7 +440,9 @@
     </main>
 
     <!-- Global Audio Player -->
-    <audio id="bg-audio" loop>
+    <!-- 로고송(풀버전 3:17). preload="none" — 🎵 버튼을 누르기 전에는 내려받지 않는다.
+         자동 다운로드하면 방문자 전원이 3MB를 쓰게 된다. -->
+    <audio id="bg-audio" loop preload="none">
         <source src="assets/logo.mp3" type="audio/mpeg">
     </audio>
     <button id="audio-toggle-btn" class="audio-toggle" aria-label="음악 재생/일시정지">
