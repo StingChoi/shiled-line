@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.shiled-line.com/</loc>
-    <lastmod>2026-08-28</lastmod>
+    <lastmod>2026-08-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -26,7 +26,7 @@
   </url>
   <url>
     <loc>https://www.shiled-line.com/blog/</loc>
-    <lastmod>2026-08-29</lastmod>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -1225,6 +1225,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.shiled-line.com/blog/benz-maybach-s580-0828-polish-triple-coating-black.html</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.shiled-line.com/blog/benz-maybach-s580-dual-coating.html</loc>
     <lastmod>2026-08-20</lastmod>
     <changefreq>monthly</changefreq>
@@ -1233,6 +1239,12 @@
   <url>
     <loc>https://www.shiled-line.com/blog/benz-s350-newcar-coating.html</loc>
     <lastmod>2026-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.shiled-line.com/blog/benz-s350d-0828-newcar-f5-coating-black.html</loc>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1297,6 +1309,24 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.shiled-line.com/blog/benz-s450-0827-newcar-f5-coating-black-2.html</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.shiled-line.com/blog/benz-s450-0827-newcar-f5-coating-black.html</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.shiled-line.com/blog/benz-s450-0828-newcar-f5-coating-black.html</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.shiled-line.com/blog/benz-s450-newcar-dual-seat-coating.html</loc>
     <lastmod>2026-08-20</lastmod>
     <changefreq>monthly</changefreq>
@@ -1353,6 +1383,12 @@
   <url>
     <loc>https://www.shiled-line.com/blog/benz-s560-dual-coating.html</loc>
     <lastmod>2026-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.shiled-line.com/blog/bmw-120-0829-newcar-gpro-coating-white.html</loc>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1495,6 +1531,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.shiled-line.com/blog/bmw-740d-0828-newcar-f5-coating-black.html</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.shiled-line.com/blog/bmw-740d-newcar-gpro-coating.html</loc>
     <lastmod>2026-08-20</lastmod>
     <changefreq>monthly</changefreq>
@@ -1593,6 +1635,12 @@
   <url>
     <loc>https://www.shiled-line.com/blog/bmw-x5-0824-newcar-f5-coating-grey.html</loc>
     <lastmod>2026-08-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.shiled-line.com/blog/bmw-x5-0829-newcar-f5-coating-white.html</loc>
+    <lastmod>2026-08-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
