@@ -3,7 +3,8 @@
 시공증명서 Firestore 등록 스크립트 (쉴드광택 대연점)
 - 서비스 계정 키: firebase-admin-key.json (gitignore 차단됨)
 - 기본은 DRY-RUN(등록 안 함). 실제 등록은 --commit 플래그.
-- 중복 방지: 같은 (vin_number + coating_type) 조합이 이미 있으면 건너뜀.
+- 중복 방지: 같은 (vin_number + coating_type + install_date) 조합이 이미 있으면 건너뜀.
+  (같은 차가 재입고돼 같은 코팅을 다른 날짜에 재시공하면 별건으로 등록됨)
 
 매니페스트(JSON) 형식: [{vin_number, car_type, coating, install_date, branch?, note?}, ...]
 coating 값은 아래 COATING_MAP의 짧은 키(F5, G-Pro, G-Top, 듀얼, 트리플, 시트코팅)를 쓴다.
@@ -101,9 +102,14 @@ def main():
         if str(j['install_date']) < CUTOFF_DATE:
             skipped.append((j, f'{CUTOFF_DATE} 이전 작업 → 등록 제외'))
             continue
-        # 중복 검사: 같은 vin_number 중 같은 coating_type 이 있으면 skip
+        # 중복 검사: 같은 vin_number + coating_type + install_date 가 모두 같으면 skip
+        # (같은 차가 재입고돼 같은 코팅을 다른 날짜에 다시 시공하는 경우는 중복이 아님)
         existing = list(col.where('vin_number', '==', vin).stream())
-        dup = [d for d in existing if d.to_dict().get('coating_type') == coating_full]
+        dup = [
+            d for d in existing
+            if d.to_dict().get('coating_type') == coating_full
+            and str(d.to_dict().get('install_date')) == str(j['install_date'])
+        ]
         rec = {
             'branch': branch,
             'vin_number': vin,
