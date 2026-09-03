@@ -16,9 +16,9 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 # (파일경로, URL경로, changefreq, priority)
 FIXED_PAGES = [
     ("index.html",           "/",                     "weekly",  "1.0"),
-    ("price.html",           "/price.html",           "monthly", "0.9"),
-    ("faq.html",             "/faq.html",             "monthly", "0.7"),
-    ("coating-layers.html",  "/coating-layers.html",  "monthly", "0.8"),
+    ("price.html",           "/price",                "monthly", "0.9"),
+    ("faq.html",             "/faq",                  "monthly", "0.7"),
+    ("coating-layers.html",  "/coating-layers",       "monthly", "0.8"),
     ("blog/index.html",      "/blog/",                "daily",   "0.8"),
 ]
 
@@ -57,7 +57,7 @@ def main():
         name = os.path.basename(fpath)
         if name == "index.html" or "zztest" in name:
             continue
-        loc = f"{BASE_URL}/blog/{name}"
+        loc = f"{BASE_URL}/blog/{os.path.splitext(name)[0]}"   # Cloudflare Pages clean URL
         lines.append(url_block(loc, lastmod(fpath), "monthly", "0.6"))
         count += 1
 

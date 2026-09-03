@@ -278,7 +278,7 @@ def publish(html_path, draft=True, publish_at=None):
     body = video_to_image_for_blogger(body)   # 블로거는 self-host 영상을 막으므로 유튜브/썸네일로 대체
     body = make_images_responsive(body)
 
-    source_url = f"{HOMEPAGE}/blog/{os.path.basename(full_path)}"
+    source_url = f"{HOMEPAGE}/blog/{os.path.splitext(os.path.basename(full_path))[0]}"
     body = add_source_notice(body, source_url)
 
     img_count = len(re.findall(r'<img\b', body, re.IGNORECASE))

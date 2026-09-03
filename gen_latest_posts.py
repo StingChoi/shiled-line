@@ -61,7 +61,7 @@ def parse_post(fp):
         date_txt = date
 
     return {
-        'url':      'blog/' + os.path.basename(fp),
+        'url':      'blog/' + os.path.splitext(os.path.basename(fp))[0],
         'tag':      tag,
         'headline': headline,
         'summary':  m_desc.group(1).strip(),
