@@ -19,6 +19,11 @@ FIXED_PAGES = [
     ("price.html",           "/price",                "monthly", "0.9"),
     ("faq.html",             "/faq",                  "monthly", "0.7"),
     ("coating-layers.html",  "/coating-layers",       "monthly", "0.8"),
+    ("about.html",           "/about",                "monthly", "0.7"),
+    ("products.html",        "/products",             "monthly", "0.9"),
+    ("services.html",        "/services",             "monthly", "0.9"),
+    ("certificates.html",    "/certificates",         "monthly", "0.6"),
+    ("partners.html",        "/partners",             "monthly", "0.6"),
     ("blog/index.html",      "/blog/",                "daily",   "0.8"),
 ]
 

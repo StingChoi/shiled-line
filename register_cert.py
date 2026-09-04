@@ -32,7 +32,7 @@ PLACE_IDS = {
     '대연': '2024246792',
     '괘법': '2140732843',
 }
-CERT_URL = 'https://www.shiled-line.com/#/certificates?vin='
+CERT_URL = 'https://www.shiled-line.com/certificates?vin='
 
 
 def review_url(branch: str) -> str:

@@ -9,7 +9,7 @@ r"""
 import sys, os
 import qrcode
 
-BASE_URL = 'https://www.shiled-line.com/#/certificates?vin='
+BASE_URL = 'https://www.shiled-line.com/certificates?vin='
 OUT_DIR = r'D:\shiled-line\blog\images\cert_qr'
 
 def make_qr(vin):

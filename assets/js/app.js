@@ -43,9 +43,15 @@ document.addEventListener('DOMContentLoaded', () => {
             hash = hash.substring(0, qIdx);
         }
 
-        // 서비스 단가는 정적 페이지(price.html)로 이관됨 — 옛 해시 링크 구제
-        if (hash === 'price') {
-            window.location.replace('/price.html');
+        // 정적 페이지로 이관된 라우트 — 옛 해시 링크 구제.
+        // ※ 시공증명서 QR(#/certificates?vin=...)과 리뷰카드 뒷면 QR(#/certificates)이
+        //   이미 인쇄·배포돼 있다. 이 리다이렉트는 절대 제거하면 안 된다.
+        const MOVED = ['price', 'about', 'products', 'services', 'certificates', 'partners'];
+        if (MOVED.indexOf(hash) !== -1) {
+            const qs = Object.keys(routeQuery).length
+                ? '?' + new URLSearchParams(routeQuery).toString()
+                : '';
+            window.location.replace('/' + hash + qs);
             return;
         }
 
@@ -487,5 +493,20 @@ document.addEventListener('DOMContentLoaded', () => {
             window.closeProductGallery();
         }
     });
+
+    // --- /certificates?vin=... 딥링크 자동 조회 ---
+    // 시공증명서 QR은 원래 #/certificates?vin=232441 형식이었고, 위 MOVED 리다이렉트가
+    // 이를 /certificates?vin=232441 로 넘긴다. 여기서 받아 번호 입력 없이 바로 조회한다.
+    (function () {
+        if (!/\/certificates\/?$/.test(window.location.pathname)) return;
+        const vin = new URLSearchParams(window.location.search).get('vin');
+        if (!vin) return;
+        const input = document.getElementById('cert-search-input');
+        const form = document.getElementById('cert-search-form');
+        if (input && form) {
+            input.value = vin;
+            form.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }));
+        }
+    })();
 
 });
