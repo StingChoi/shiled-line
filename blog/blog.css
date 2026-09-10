@@ -189,3 +189,12 @@ footer.legal{background:var(--ink);color:var(--muted-dark);font-size:12.5px;padd
   .related{padding:18px;}
   .related a{font-size:14px;}
 }
+
+/* 이 시공에 쓴 것 — 글에서 제품·서비스 소개로 내려가는 링크 (2026-09-11) */
+.related .rl-used{
+  margin:14px 0 0;padding:12px 0 0;border-top:1px dashed var(--line);
+  font-size:14px;line-height:1.6;color:var(--muted);
+}
+.related .rl-used span{font-weight:700;color:var(--ink);margin-right:6px;}
+.related .rl-used em{font-style:normal;color:var(--line);margin:0 4px;}
+.related .rl-used a{font-weight:600;text-decoration:underline;text-underline-offset:3px;}
