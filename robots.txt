@@ -3,3 +3,7 @@ User-agent: *
 Allow: /
 
 Sitemap: https://www.shiled-line.com/sitemap.xml
+
+# blog_bak_20260813_085332 은 일부러 Disallow 하지 않는다.
+# 출입을 막으면 크롤러가 그 안의 noindex 표시를 읽지 못해
+# 이미 색인된 글이 오히려 안 빠진다. 각 파일에 noindex 를 달아뒀다.
