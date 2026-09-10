@@ -7,6 +7,7 @@ echo [auto_publish] 1/4 YouTube upload...
 py upload_videos.py --all
 
 echo [auto_publish] 2/4 GitHub push...
+py normalize_urls.py
 py gen_sitemap.py
 py gen_latest_posts.py
 git add -A
