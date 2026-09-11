@@ -197,4 +197,4 @@ footer.legal{background:var(--ink);color:var(--muted-dark);font-size:12.5px;padd
 }
 .related .rl-used span{font-weight:700;color:var(--ink);margin-right:6px;}
 .related .rl-used em{font-style:normal;color:var(--line);margin:0 4px;}
-.related .rl-used a{font-weight:600;text-decoration:underline;text-underline-offset:3px;}
+.related .rl-used a{display:inline;font-weight:600;text-decoration:underline;text-underline-offset:3px;}  /* .related a 가 block 이라 되돌린다 */
