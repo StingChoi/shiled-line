@@ -26,9 +26,18 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Router Logic ---
     function navigate() {
         let hash = window.location.hash.substring(1); // remove '#'
+
+        // 라우트는 '#/xxx' 꼴만이다. '#f5' 처럼 슬래시 없는 해시는 페이지 안 앵커라
+        // 라우터가 손대면 안 된다 — 블로그에서 /products#f5 로 들어온 사람에게
+        // 404 를 그려주던 사고가 있었다. 브라우저가 알아서 그 자리로 내려준다.
+        if (hash && !hash.startsWith('/')) {
+            if (isFirstRender) { isFirstRender = false; updateNav('home'); }
+            return;
+        }
+
         if (!hash || hash === '/') {
             hash = 'home';
-        } else if (hash.startsWith('/')) {
+        } else {
             hash = hash.substring(1); // remove leading '/'
         }
 
