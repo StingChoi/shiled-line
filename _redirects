@@ -1,0 +1,4 @@
+# Cloudflare Pages 리다이렉트 규칙
+# www 없는 주소(옛 워드프레스가 살아있던 apex 도메인)를 정본 www로 301 영구이동.
+# apex 도메인이 Pages 프로젝트에 "사용자 지정 도메인"으로 붙은 뒤부터 동작한다.
+https://shiled-line.com/* https://www.shiled-line.com/:splat 301
