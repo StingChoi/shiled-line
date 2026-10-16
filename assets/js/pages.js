@@ -629,7 +629,10 @@ const pages = {
 
                         <div>
                             <label style="display:block; margin-bottom:0.8rem; color: var(--text-muted); font-size:0.95rem;">시공 일자</label>
-                            <input type="date" id="reg-date" required style="width: 100%; padding: 1.2rem; border-radius: 4px; border: 1px solid var(--border-light); background: rgba(0,0,0,0.5); color: #fff; font-family: var(--font-body); outline: none; font-size: 1rem; cursor: pointer;">
+                            <div style="display:flex; gap:0.5rem;">
+                                <input type="text" id="reg-date" inputmode="numeric" autocomplete="off" maxlength="10" placeholder="예: 20261016" required style="flex:1; min-width:0; padding: 1.2rem; border-radius: 4px; border: 1px solid var(--border-light); background: rgba(0,0,0,0.5); color: #fff; font-family: var(--font-body); outline: none; font-size: 1rem;">
+                                <button type="button" id="reg-date-today" class="btn btn-outline" style="padding: 0 1.2rem; cursor: pointer; white-space: nowrap;">오늘</button>
+                            </div>
                         </div>
 
                         <div style="margin-top: 1rem; display:flex; gap: 1rem;">

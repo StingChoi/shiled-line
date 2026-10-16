@@ -146,6 +146,38 @@ document.addEventListener('DOMContentLoaded', () => {
     // 시공증명서 조회 및 관리 모두 Firebase Firestore 단일 소스로 운영
 
     // --- Helpers ---
+    // 시공일자: 폰 크롬의 type=date 달력이 어두운 배경에서 안 보이고 안 눌려서 숫자 직접입력으로 바꿈.
+    // 20261016 / 2026-10-16 / 2026.10.16 / 2026 10 16 모두 받아 YYYY-MM-DD로 맞춘다.
+    function normalizeDateInput(raw) {
+        const d = String(raw || '').replace(/\D/g, '');
+        if (d.length !== 8) return null;
+        const y = +d.slice(0, 4), m = +d.slice(4, 6), day = +d.slice(6, 8);
+        const dt = new Date(y, m - 1, day);
+        if (dt.getFullYear() !== y || dt.getMonth() !== m - 1 || dt.getDate() !== day) return null;
+        return `${d.slice(0, 4)}-${d.slice(4, 6)}-${d.slice(6, 8)}`;
+    }
+
+    function todayStr() {
+        const t = new Date();
+        return `${t.getFullYear()}-${String(t.getMonth() + 1).padStart(2, '0')}-${String(t.getDate()).padStart(2, '0')}`;
+    }
+
+    // 숫자 치는 대로 2026-10-16 모양으로 하이픈 자동 삽입
+    document.addEventListener('input', (e) => {
+        if (!e.target || e.target.id !== 'reg-date') return;
+        const d = e.target.value.replace(/\D/g, '').slice(0, 8);
+        let out = d.slice(0, 4);
+        if (d.length > 4) out += '-' + d.slice(4, 6);
+        if (d.length > 6) out += '-' + d.slice(6, 8);
+        e.target.value = out;
+    });
+
+    document.addEventListener('click', (e) => {
+        if (e.target && e.target.id === 'reg-date-today') {
+            document.getElementById('reg-date').value = todayStr();
+        }
+    });
+
     function formatDateKorean(dateString) {
         if (!dateString) return '-';
         const parts = dateString.split('-');
@@ -363,7 +395,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const vin = document.getElementById('reg-vin').value;
             const model = document.getElementById('reg-model').value;
             const type = document.getElementById('reg-type').value;
-            const dateStr = document.getElementById('reg-date').value;
+            const dateStr = normalizeDateInput(document.getElementById('reg-date').value);
+            if (!dateStr) {
+                alert("시공 일자를 8자리 숫자로 입력해주세요. 예: 20261016");
+                document.getElementById('reg-date').focus();
+                return;
+            }
 
             const certData = {
                 branch: branch,
