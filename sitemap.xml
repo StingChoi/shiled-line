@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://www.shiled-line.com/</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -56,7 +56,7 @@
   </url>
   <url>
     <loc>https://www.shiled-line.com/blog/</loc>
-    <lastmod>2026-10-22</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
@@ -153,6 +153,12 @@
   <url>
     <loc>https://www.shiled-line.com/blog/20260715-benz-e200-coating</loc>
     <lastmod>2026-09-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.shiled-line.com/blog/benz-a220-1021-newcar-f5-coating-blue</loc>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -650,7 +656,7 @@
   </url>
   <url>
     <loc>https://www.shiled-line.com/blog/benz-e200amg-1014-newcar-f5-coating-white</loc>
-    <lastmod>2026-10-20</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -663,6 +669,12 @@
   <url>
     <loc>https://www.shiled-line.com/blog/benz-e200amg-1017-newcar-gtop-coating-black</loc>
     <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.shiled-line.com/blog/benz-e200amg-1020-newcar-f5-coating-white</loc>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -734,13 +746,13 @@
   </url>
   <url>
     <loc>https://www.shiled-line.com/blog/benz-e200ex-1015-newcar-f5-coating-white</loc>
-    <lastmod>2026-10-20</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.shiled-line.com/blog/benz-e200ex-1016-newcar-f5-seatcoat-black</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -753,6 +765,12 @@
   <url>
     <loc>https://www.shiled-line.com/blog/benz-e200ex-1017-newcar-f5-coating-white</loc>
     <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.shiled-line.com/blog/benz-e200ex-1020-newcar-f5-coating-white</loc>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -974,7 +992,7 @@
   </url>
   <url>
     <loc>https://www.shiled-line.com/blog/benz-e300amg-1016-newcar-f5-coating-gray</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1005,6 +1023,12 @@
   <url>
     <loc>https://www.shiled-line.com/blog/benz-e300ex-1008-newcar-gtop-coating-gray</loc>
     <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.shiled-line.com/blog/benz-e300ex-1020-newcar-f5-coating-black</loc>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1059,6 +1083,12 @@
   <url>
     <loc>https://www.shiled-line.com/blog/benz-e53-0827-newcar-f5-coating-black</loc>
     <lastmod>2026-09-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.shiled-line.com/blog/benz-e53-1017-newcar-f5-coating-black</loc>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1196,7 +1226,13 @@
   </url>
   <url>
     <loc>https://www.shiled-line.com/blog/benz-g450-1015-newcar-f5-coating-white</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.shiled-line.com/blog/benz-g450-1019-newcar-f5-coating-black</loc>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1399,6 +1435,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.shiled-line.com/blog/benz-glc300-1019-newcar-f5-coating-gray</loc>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.shiled-line.com/blog/benz-glc300-coupe-0814-overspray-polish-white</loc>
     <lastmod>2026-09-11</lastmod>
     <changefreq>monthly</changefreq>
@@ -1478,7 +1520,7 @@
   </url>
   <url>
     <loc>https://www.shiled-line.com/blog/benz-gle300d-1010-polish-black</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1622,7 +1664,13 @@
   </url>
   <url>
     <loc>https://www.shiled-line.com/blog/benz-gle450amg-1016-newcar-f5-coating-black</loc>
-    <lastmod>2026-10-21</lastmod>
+    <lastmod>2026-10-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.shiled-line.com/blog/benz-gle450amg-1020-newcar-f5-coating-black</loc>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1970,7 +2018,7 @@
   </url>
   <url>
     <loc>https://www.shiled-line.com/blog/benz-s500-1012-newcar-gtop-coating-black</loc>
-    <lastmod>2026-10-20</lastmod>
+    <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
