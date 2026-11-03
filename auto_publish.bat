@@ -10,6 +10,7 @@ echo [auto_publish] 2/4 GitHub push...
 py normalize_urls.py
 py link_products.py
 py gen_area_pages.py
+py gen_info_pages.py
 py gen_sitemap.py
 py gen_latest_posts.py
 git add -A
