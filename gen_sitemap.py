@@ -30,6 +30,7 @@ FIXED_PAGES = [
     ("benz.html",            "/benz",                 "weekly",  "0.9"),
     ("bmw.html",             "/bmw",                  "weekly",  "0.9"),
     ("blog/index.html",      "/blog/",                "daily",   "0.8"),
+    ("info/index.html",      "/info/",                "weekly",  "0.8"),
 ]
 
 
@@ -60,6 +61,15 @@ def main():
         if os.path.exists(fpath):
             lines.append(url_block(BASE_URL + urlpath, lastmod(fpath), freq, prio))
             count += 1
+
+    # 정보성 글 (/info/)
+    for fpath in sorted(glob.glob(os.path.join(ROOT, "info", "*.html"))):
+        name = os.path.basename(fpath)
+        if name == "index.html":
+            continue
+        loc = f"{BASE_URL}/info/{os.path.splitext(name)[0]}"
+        lines.append(url_block(loc, lastmod(fpath), "monthly", "0.8"))
+        count += 1
 
     # 블로그 개별 글 (index.html / 테스트 파일 제외)
     posts = sorted(glob.glob(os.path.join(ROOT, "blog", "*.html")))
