@@ -19,6 +19,7 @@
     <meta property="og:site_name" content="쉴드광택" />
     <meta property="og:locale" content="ko_KR" />
     <meta name="description" content="부산 남구 자동차 광택·유리막코팅 전문점 쉴드광택. 16년 경력 코팅제 개발자가 직접 개발한 F5·G-PRO·G-TOP 유리막코팅제로 시공합니다. 메르세데스-벤츠 부산 남천점 공식 협력업체 · 예약 010-3384-1850">
+    <meta name="keywords" content="부산 광택, 부산 유리막코팅, 수영구 광택, 수영구 유리막코팅, 남천동 유리막코팅, 남천동 광택, 벤츠 광택, 벤츠 유리막코팅, 부산 신차코팅, 부산 유막제거, 대연동 광택, 남구 유리막코팅, 도어몰딩 복원, 쉴드광택">
 
     <!-- Google Fonts: Inter and Noto Sans KR -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -73,7 +74,19 @@
         "latitude": 35.129811,
         "longitude": 129.100345
       },
-      "areaServed": { "@type": "City", "name": "부산" },
+      "areaServed": [
+        { "@type": "City", "name": "부산광역시" },
+        { "@type": "AdministrativeArea", "name": "부산 남구" },
+        { "@type": "AdministrativeArea", "name": "부산 수영구" },
+        { "@type": "AdministrativeArea", "name": "부산 해운대구" },
+        { "@type": "Place", "name": "남천동" },
+        { "@type": "Place", "name": "광안동" },
+        { "@type": "Place", "name": "민락동" },
+        { "@type": "Place", "name": "수영동" },
+        { "@type": "Place", "name": "망미동" },
+        { "@type": "Place", "name": "대연동" },
+        { "@type": "Place", "name": "용호동" }
+      ],
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
@@ -605,6 +618,34 @@
             </div>
         </section>
 
+        <!-- 시공 지역 · 차량 안내 — 지역 질의로 들어오는 사람에게 줄 페이지가 없어서 따로 만들었다.
+             홈에 "부산 남구"만 적혀 있으면 "수영구 광택"·"남천동 유리막코팅" 같은 검색에는 걸리지 않는다. -->
+        <section class="section" style="padding-top: 0;">
+            <div class="container">
+                <div class="text-center mb-8">
+                    <h2 class="mb-2">시공 <span class="gradient-text">지역 · 차량</span> 안내</h2>
+                    <p class="text-muted">남구 대연동(유엔로 220)에 있습니다. 수영구와는 구 경계 하나 차이입니다.</p>
+                </div>
+                <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1rem;">
+                    <a href="/suyeong" class="glass-card" style="text-decoration:none; display:block;">
+                        <h3 class="mb-2">수영구 광택 · 유리막코팅</h3>
+                        <p class="text-muted" style="margin:0;">남천동 차로 10분, 광안동·민락동·수영동·망미동 15분 안쪽.
+                            바닷바람 염분과 물때를 함께 봅니다. <span class="gradient-text">자세히 →</span></p>
+                    </a>
+                    <a href="/namcheon" class="glass-card" style="text-decoration:none; display:block;">
+                        <h3 class="mb-2">남천동 광택 · 유리막코팅</h3>
+                        <p class="text-muted" style="margin:0;">벤츠 부산 남천점 공식 협력업체.
+                            신차 인수 당일 바로 입고하실 수 있습니다. <span class="gradient-text">자세히 →</span></p>
+                    </a>
+                    <a href="/benz" class="glass-card" style="text-decoration:none; display:block;">
+                        <h3 class="mb-2">벤츠 광택 · 유리막코팅</h3>
+                        <p class="text-muted" style="margin:0;">E클래스부터 마이바흐까지, 작업 일지에 공개한
+                            벤츠 시공 기록과 차급별 금액. <span class="gradient-text">자세히 →</span></p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
         <!-- 오시는 길 · 예약 (검색·AI 노출용 텍스트) -->
         <section class="section" style="padding-top: 0;">
             <div class="container">
@@ -646,6 +687,9 @@
                     <a href="https://map.naver.com/p/entry/place/2024246792" target="_blank" rel="noopener noreferrer" class="gradient-text">네이버 플레이스</a>
                     &nbsp;·&nbsp;
                     <a href="https://blog.naver.com/shiledgt" target="_blank" rel="noopener noreferrer" class="gradient-text">블로그</a>
+                </p>
+                <p style="margin-top:0.9rem;">시공 지역 안내:
+                    <a href="/suyeong" class="gradient-text">수영구</a>&nbsp;·&nbsp;<a href="/namcheon" class="gradient-text">남천동</a>&nbsp;·&nbsp;<a href="/benz" class="gradient-text">벤츠 차량</a>
                 </p>
                 <div style="margin-top:1.25rem; line-height:1.7; opacity:0.6;">
                     <p style="margin:0; font-size:0.78rem;">상호: 쉴드광택(쉴드랩)&nbsp;|&nbsp;대표: 최한중</p>
