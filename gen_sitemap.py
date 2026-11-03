@@ -26,7 +26,9 @@ FIXED_PAGES = [
     ("partners.html",        "/partners",             "monthly", "0.6"),
     ("suyeong.html",         "/suyeong",              "monthly", "0.9"),
     ("namcheon.html",        "/namcheon",             "monthly", "0.9"),
+    ("daeyeon.html",         "/daeyeon",              "monthly", "0.9"),
     ("benz.html",            "/benz",                 "weekly",  "0.9"),
+    ("bmw.html",             "/bmw",                  "weekly",  "0.9"),
     ("blog/index.html",      "/blog/",                "daily",   "0.8"),
 ]
 
